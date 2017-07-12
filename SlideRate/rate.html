@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #tt{
+            height: 10px;
+            background: #00a0df;
+            width: 10px;
+
+        }
+    </style>
+</head>
+<body>
+<div id="tt"></div>
+<script>
+    function rate(){
+        this.line_css={
+            width:'90%',
+            height:'50px',
+            position:'fixed',
+            left:'5%',
+            bottom:'5%',
+            borderRadius:'50px',
+            background:'blue'
+        };
+        this.raduis_css={
+            width:'70px',
+            height:'70px',
+            borderRadius:'100%',
+            position:'absolute',
+            left:0,
+            top:'50%',
+            marginTop:'-35px',
+            color:'#fff',
+            lineHeight:'70px',
+            textAlign:'center',
+            fontSize:'20px',
+            background:'red'
+        };
+        this.creating=function(fn){
+            var line=document.createElement('div');
+            for (items in this.line_css){
+//                console.log(items+':'+this.line_css[items]);
+                line.style[items]=this.line_css[items];
+            }
+            var raduis=document.createElement('div');
+            for (items in this.raduis_css){
+//                console.log(items+':'+this.line_css[items]);
+                raduis.style[items]=this.raduis_css[items];
+            }
+            line.appendChild(raduis);
+            document.body.appendChild(line);
+            var down_x;
+            var max_left=line.offsetWidth-raduis.offsetWidth;
+            var rate_dot_x=raduis.offsetLeft;
+            var move_x;
+            raduis.addEventListener("mousedown",function(e){
+                down_x= e.pageX;
+                rate_dot_x=raduis.offsetLeft;
+                document.addEventListener("mousemove",getCo,false)
+            },false);
+            raduis.addEventListener("mouseup",function(e){
+                document.removeEventListener("mousemove",getCo,false)
+            },false);
+            document.addEventListener("mouseup",function(e){
+                document.removeEventListener("mousemove",getCo,false)
+            },false);
+            function getCo(e){
+                e.preventDefault();
+                move_x=rate_dot_x+ e.pageX-down_x;
+                if(move_x<=0){
+                    move_x=0;
+                }
+                if(move_x>=max_left){
+                    move_x=max_left;
+                }
+                raduis.style.left=move_x+'px';
+                raduis.innerHTML=Math.round((move_x/max_left)*100)+'%';
+                var _rate=Math.round((move_x/max_left)*100);
+                fn(_rate);
+            }
+//            return function getR(b){
+//                var a;
+//                (b == 'R') ? a=raduis : a=line;
+//               return a;
+//            }
+        };
+    }
+    var rate1=new rate;
+    rate1.creating(tt);
+    var tt=document.getElementById('tt')
+    function  tt(t){
+        tt.style.width=t+'px';
+        console.log(t)
+    }
+</script>
+</body>
+</html>

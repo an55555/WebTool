@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Swiper中文网基础演示(www.swiper.com.cn)</title>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/swiper.min.css">
+<!--Swiper3.0.4-->
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+.blue-slide {
+	background: #4390EE;
+}
+.red-slide {
+	background: #CA4040;
+}
+.orange-slide {
+	background: #FF8604;
+}
+.swiper-slide {
+	color: #fff;
+	font-size: 36px;
+	text-align: center;
+}
+.swiper-container {
+	margin: 0 auto;
+	position: absolute;
+	overflow: hidden;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+}
+/*.swiper-container{*/
+	/*width: 500px;*/
+	/*height: 800px;*/
+/*}*/
+.display-box{
+	display:-moz-box;
+	display:-webkit-box;
+	display:box;
+	-moz-box-orient:vertical;
+	-webkit-box-orient:vertical;
+	box-orient:vertical;
+	box-pack: center;
+	box-align: center;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-moz-box-pack: center;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+}
+	.display-box img{
+		display: block;
+		/*width: 100%;*/
+	}
+</style>
+</head>
+<body>
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide blue-slide display-box">    <img src="../../asset/cover.jpg" id="testImg" alt="" style="width: 100%;" /></div>
+    <div class="swiper-slide red-slide display-box">
+		<div class="swiper-zoom-container">
+			<img src="../../asset/cover.jpg"  alt="" style="width: 100%;" />
+		</div>
+	</div>
+    <div class="swiper-slide orange-slide display-box">    <img src="../../asset/cover.jpg" alt="" style="width: 100%;" /></div>
+  </div>
+</div>
+<!--<div id="btn1">-->
+<!--134314-->
+<!--</div>-->
+<script src="transform.js"></script>
+<script src="alloy_finger.js"></script>
+<script src="image_loaded.js"></script>
+<script src="to.js"></script>
+
+<script src="js/swiper.min.js"></script>
+<script type="text/javascript">
+
+</script>
+<script>
+	var topPx;
+	imageLoaded("#testImg",function(w,h){
+//            document.querySelector("#imgBox").style.display="block";
+		topPx=window.innerHeight/2-(h*window.innerWidth/w)/2;
+//            this.style.top=topPx+"px";
+	});
+	function ease(x) {
+		return Math.sqrt(1 - Math.pow(x - 1, 2));
+	}
+	var el = document.getElementById("testImg");
+	Transform(el);
+	var initScale = 1;
+	new AlloyFinger(el, {
+		multipointStart: function () {
+			To.stopAll();
+			initScale = el.scaleX;
+		},
+		rotate: function (evt) {
+			el.rotateZ += evt.angle;
+		},
+		pinch: function (evt) {
+			el.scaleX = el.scaleY = initScale * evt.scale;
+		},
+		multipointEnd: function () {
+			console.log('结束的地方');
+			if($('#testImg').position().left>0){
+				mySwiper.unlockSwipes();
+			}else{
+				mySwiper.lockSwipes();
+			}
+			To.stopAll();
+			if(el.scaleX <= 1){
+				new To(el, "translateX", 0, 500, ease);
+				new To(el, "translateY", 0, 500, ease);
+			}
+			if (el.scaleX < 1) {
+				new To(el, "scaleX", 1, 500, ease);
+				new To(el, "scaleY", 1, 500, ease);
+			}
+			if (el.scaleX > 2) {
+
+				new To(el, "scaleX", 2, 500, ease);
+				new To(el, "scaleY", 2, 500, ease);
+			}
+			var rotation = el.rotateZ % 360;
+
+			if (rotation < 0)rotation = 360 + rotation;
+			el.rotateZ=rotation;
+
+			if (rotation > 0 && rotation < 45) {
+				new To(el, "rotateZ", 0, 500, ease);
+			} else if (rotation >= 315) {
+				new To(el, "rotateZ", 360, 500, ease);
+			} else if (rotation >= 45 && rotation < 135) {
+				new To(el, "rotateZ", 90, 500, ease);
+			} else if (rotation >= 135 && rotation < 225) {
+				new To(el, "rotateZ", 180, 500, ease);
+			} else if (rotation >= 225 && rotation < 315) {
+				new To(el, "rotateZ", 270, 500, ease);
+			}
+		},
+		pressMove: function (evt) {
+
+			if($('#testImg').position().left>0){
+				mySwiper.unlockSwipes();
+				el.translateX += 0;
+				el.translateY += 0;
+			}else{
+				mySwiper.lockSwipes();
+				console.log('evt.deltaX'+evt.deltaX);
+				el.translateX += evt.deltaX;
+				el.translateY += evt.deltaY;
+				evt.preventDefault();
+			}
+		},
+		tap: function (evt) {
+			//console.log(el.scaleX + "_" + el.scaleY + "_" + el.rotateZ + "_" + el.translateX + "_" + el.translateY);
+			//console.log("tap");
+		},
+		doubleTap: function (evt) {
+			To.stopAll();
+			if (el.scaleX > 1.5) {
+				new To(el, "scaleX", 1, 500, ease);
+				new To(el, "scaleY", 1, 500, ease);
+				new To(el, "translateX", 0, 500, ease);
+				new To(el, "translateY", 0, 500, ease);
+			} else {
+				var box = el.getBoundingClientRect();
+				var y = box.height - (( evt.changedTouches[0].pageY - topPx) * 2) - (box.height / 2 - ( evt.changedTouches[0].pageY - topPx));
+				var x = box.width - (( evt.changedTouches[0].pageX) * 2) - (box.width / 2 - ( evt.changedTouches[0].pageX));
+				new To(el, "scaleX", 2, 500, ease);
+				new To(el, "scaleY", 2, 500, ease);
+				new To(el, "translateX", x, 500, ease);
+				new To(el, "translateY", y, 500, ease);
+			}
+			//console.log("doubleTap");
+		},
+		longTap: function (evt) {
+			//console.log("longTap");
+		},
+		swipe: function (evt) {
+			//console.log("swipe" + evt.direction);
+		}
+
+	});
+	var mySwiper = new Swiper('.swiper-container',{
+		swipeHandler : 'img',
+		loop: true,
+		onSlideChangeEnd: function(swiper){
+			new To(el, "translateX", 0, 500, ease);
+			new To(el, "translateY", 0, 500, ease);
+			new To(el, "scaleX", 1, 500, ease);
+			new To(el, "scaleY", 1, 500, ease);
+		}
+	});
+	$('#btn1').click(function(){
+		mySwiper.lockSwipes();
+	})
+</script>
+</body>
+</html>

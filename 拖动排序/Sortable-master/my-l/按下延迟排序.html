@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>Title</title>
+    <style>
+        h3{margin: 0}
+        .list-group-item{height: 100px;border: solid 1px #eee;margin: 20px}
+        .list-group{margin-bottom: 30px}
+        .bg1{background: #00a0e9}
+        .bg2{background: #00B83F}
+        .bg3{background: #ff334b}
+        .bg4{background: #000}
+    </style>
+</head>
+<body>
+<h3>可移动</h3>
+<!-- sort: true -->
+<div id="sortTrue" class="list-group">
+    <div class="list-group-item bg1"></div>
+    <div class="list-group-item bg2"></div>
+    <div class="list-group-item bg3"></div>
+    <div class="list-group-item bg4"></div>
+</div>
+
+</body>
+<script src="../../jquery-1.11.3.min.js"></script>
+<script src="../Sortable.js"></script>
+<script>
+    // sort: true
+    Sortable.create(sortTrue, {
+        delay: 1000
+    });
+    $('.list-group').delegate('.list-group-item','touchstart',function(e){
+        e.preventDefault()
+    })
+</script>
+</html>

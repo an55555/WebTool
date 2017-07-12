@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h3{margin: 0}
+        .list-group-item{padding: 5px 8px;border: solid 1px #eee;margin: 20px}
+        .list-group{margin-bottom: 30px}
+        .ghost {
+            opacity: .5;
+            background: #C8EBFB;
+        }
+        .ghost2 {
+            opacity: .5;
+            background: red;
+        }
+        .grid .item {
+            padding: 10px;
+            float: left;
+        }
+        .sortable-fallback img{
+            border-radius: 50%;
+        }
+        .grid .item img {
+            cursor: move;
+            cursor: -webkit-grabbing;
+        }
+    </style>
+</head>
+<body>
+<h3>可移动</h3>
+<!-- sort: true -->
+<div id="sortable" class="grid">
+    <div class="item"><img src="http://lorempixel.com/100/100/people/1" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/people/2" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/people/3" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/people/4" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/people/5" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/people/6" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/people/7" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/people/8" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/people/9" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/people/10" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/animals/1" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/animals/2" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/animals/3" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/animals/4" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/animals/5" alt=""></div>
+    <div class="item"><img src="http://lorempixel.com/100/100/animals/6" alt=""></div>
+</div>
+
+
+</body>
+<script src="../Sortable.js"></script>
+<script>
+    Sortable.create(sortable, {
+        forceFallback: true
+    });
+
+</script>
+</html>

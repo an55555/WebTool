@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+    <title></title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: "微软雅黑";
+        }
+
+        #iSlider-wrapper ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #iSlider-wrapper li {
+            width: 100%;
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            list-style: none;
+        }
+
+        #iSlider-wrapper {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .content{
+            width: 100%;
+            height: 100%;
+            color: #FFFFFF;
+            display:-moz-box;
+            display:-webkit-box;
+            display:box;
+
+            /*-moz-box-orient:horizontal;*/
+            /*-webkit-box-orient:horizontal;*/
+            /*box-orient:horizontal;*/
+            box-pack: center;
+            box-align: center;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+        }
+
+        .page1{
+            background: #19CAAD;
+        }
+        .page2{
+            background: #8CC7B5;
+        }
+        .page3{
+            background: #A0EEE1;
+        }
+        .page4{
+            background: #F4606C;
+        }
+        .page5{
+            background: #BEEDC7;
+        }
+        h1{
+            font-weight: normal;
+        }
+        @-webkit-keyframes move{
+            from{
+                color: #f50f43;
+            }to{
+            color: #2aabd2;
+                         }
+        }
+
+       #iSlider-nav{
+            display: -webkit-box;
+            background: rgba(0,0,0,0.5);
+        }
+        #iSlider-nav a{
+            -webkit-box-flex:1;
+            -webkit-transition:all 0.5s ease;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 12px;
+            z-index: 2;
+            color: #FFFFFF;
+            position: relative;
+        }
+        #iSlider-nav span{
+            height: 30px;
+            background: #3db1fa;
+            position: absolute;
+            top: 0px;
+            z-index: 1;
+            left: 0px;
+            -webkit-transition:0.3s
+        }
+    </style>
+</head>
+<body>
+<div id="iSlider-wrapper">
+    <div id="iSlider-nav">
+        <span></span>
+        <a id="0">第一屏</a>
+        <a id="1">第二屏</a>
+        <a id="2">第三屏</a>
+        <a id="3">第四屏</a>
+        <a id="4">第五屏</a>
+    </div>
+    <div id="iSlide-show">
+
+    </div>
+</div>
+<script type="text/javascript" src="js/iSlider.js"></script>
+<script type="text/javascript" src="js/iSlider.animate.js"></script>
+<script>
+var list=[
+    {
+        'content': '<div class="content page1"><h1>这是第一屏</h1></div>'
+    },
+    {
+        'content': '<div class="content page2"><h1>这是第二屏</h1></div>'
+    },
+    {
+        'content': '<div class="content page3"><h1>这是第三屏</h1></div>'
+    },
+    {
+        'content': '<div class="content page4"><h1>这是第四屏</h1></div>'
+    },
+    {
+        'content': '<div class="content page5"><h1>这是第五屏</h1></div>'
+    }
+];
+
+var tabs=document.getElementById("iSlider-nav").querySelectorAll("a");
+var span=document.getElementById("iSlider-nav").querySelector("span");
+var tabsW=tabs[0].clientWidth;
+span.style.width=tabsW+'px';
+
+var opts = {
+    data: list,
+    dom: document.getElementById("iSlide-show"),
+    animateType:'default'
+//    onslideend:function(idx){
+////        alert(idx);
+//        span.style.weidth=tabs[inx].clientWidth+'px';
+//        span.style.left=tabs[inx].offsetLeft+'px';
+//    },
+//    onslidechange:function(){
+//        span.style.weidth=tabs[inx].clientWidth+'px';
+//        span.style.left=tabs[inx].offsetLeft+'px';
+//    }
+};
+
+var islider = new iSlider(opts);
+    islider.on("slideChanged",function(ind){
+        span.style.weidth=tabs[ind].clientWidth+'px';
+        span.style.left=tabs[ind].offsetLeft+'px'
+    });
+
+    for(var i=0;i<tabs.length;i++){
+        tabs[i].id = i;
+        tabs[i].addEventListener('click', function (e) {
+            var idx = parseInt(e.target.id);
+            islider.slideTo(idx);
+            span.style.weidth=tabs[idx].clientWidth+'px';
+            span.style.left=tabs[idx].offsetLeft+'px'
+        }, false);
+    }
+
+
+</script>
+
+</body>
+</html>

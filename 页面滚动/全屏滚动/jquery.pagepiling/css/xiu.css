@@ -1,0 +1,240 @@
+body{
+    font-family:'微软雅黑';
+}
+
+.loadingMark{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 201;
+    display: block;
+    background: #3e79b5;
+    color: #ffffff;
+}
+/*加载动画2*/
+.loading2{
+    width: 118px;
+    height: 118px;
+    box-sizing: border-box;
+    border: solid 15px #ffffff;
+    border-radius: 100px;
+    position: relative;
+    margin: 40% auto;
+}
+.loading2:before{
+
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: -16px;
+    width: 122px;
+    height: 62px;
+    border-radius:60px 60px 0 0;
+    background-color:#3e79b5;
+    transform-origin:60px 60px;
+    animation:loading2 2s infinite ease 0.5s;
+
+}
+.loading2:after{
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 46px;
+    width: 122px;
+    height: 62px;
+    border-radius:0px 0px 60px 60px;
+    background-color:#3e79b5;
+    transform-origin:60px 0px;
+    animation:loading2 2s infinite ease;
+}
+@keyframes loading2{
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.Go{
+    display: none;
+}
+.page{
+    opacity: 0;
+}
+.start{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    background-color: #FFFFFF;
+
+}
+.start img{
+    height: 90%;
+}
+
+.start .timing{
+    position: absolute;
+    bottom: 3em;
+    text-align: center;
+    width: 100%;
+    color:#000000;
+    font-size: 20px;
+    background-color: #FFFFFF;
+}
+
+#onePage{
+    background: url("../images/onePageBG.jpg") no-repeat;
+    background-size: 100% 100%;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 2em;
+}
+
+.onePageTxt{
+    padding: 1em;
+    line-height:2em;
+    margin:1em auto;
+    width: 70%;
+    font-size: 14px;
+    border-top: solid 1px #d2777e;
+
+}
+
+
+
+/*第二屏*/
+#twoPage{
+    background: url("../images/one.jpg");
+    background-size:100% 100% ;
+}
+#twoPage .phoBox{
+    position: relative;
+    z-index: 6;
+    width: 50%;
+    margin: auto;
+    border: solid 7px #ffffff;
+    border-radius: 50%;
+}
+#twoPage .phoBox img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+/*第三屏*/
+
+#threePage{
+    color: #000000;
+}
+#threePage .picBox{
+    position: absolute;
+    top: 10px;
+    width: 90%;
+    margin: auto;
+
+}
+#threePage .picBox img{
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+#threePage .txtBox{
+    position: absolute;
+    width: 100%;
+}
+#threePage .txtBox p{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    background: #FFFFFF;
+}
+
+/*第四屏*/
+ul{
+    padding: 0px;
+    margin: 0px;
+}
+li{
+}
+#fourPage{
+    background: url("../images/fourBg.jpg");
+    background-size: 100% 100%;
+}
+#fourPage .imgBox{
+    width: 80%;
+    overflow: hidden;
+    margin: auto;
+    position: relative;
+}
+#fourPage .imgBox li{
+    width: 30%;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    margin: 1.1%;
+}
+#fourPage .imgBox li img{
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 0px;
+}
+#fourPage .imgBox .mark{
+    width:50%;
+    height:40%;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 25%;
+    left: 25%;
+    background: rgba(255,255,255,0.7);
+    font-size: 20px;
+    color: #000000;
+    line-height: 8em;
+}
+#fourPage .imgBox .mark b{
+    font-size: 50px;
+    color: #474d33;
+}
+
+/*第五屏*/
+#fivePage{
+    color: #ffffff;
+    background: url("../images/fiveBg.jpg");
+    background-size: 100% 100%;
+}
+#fivePage .fivePageBox{
+    margin: auto;
+    width: 300px;
+    height: 300px;
+    position: relative;
+}
+#fivePage #myCanvas{
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    z-index: 1;
+}
+
+#fivePage .txtBox{
+    width: 200px;
+    height: 200px;
+    top: 50px;
+    left: 50px;
+    position: absolute;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    color: #000000;
+}
+

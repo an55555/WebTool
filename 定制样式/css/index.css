@@ -1,0 +1,42 @@
+body{background: #ebebeb}
+.bg-primary{background: #45dcd7;color: #fff}
+.act-primary{background: #38c5c0;color:#fff}
+.bg-fff{background: #fff;color: #000}
+/*顶部*/
+.head{width: 1200px;margin: 0 auto;padding: 7px 0;position: relative}
+.headPic{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border:solid 3px #38c5c0;
+}
+.head span{margin-left: 20px;cursor: pointer}
+.headInImg{height: 18px}
+.headLogo{position: absolute;height: 60px;top: 50%;margin-top: -30px;left: 0}
+.head .iconfont{font-size: 17px}
+.main{width: 1200px;margin: 6px auto}
+.nav{width: 200px;float: left}
+.nav .nav-unit{padding: 10px 30px;background: #fff;color: #000;cursor: pointer}
+/*多级菜单*/
+ul.sliding, .sliding ul{list-style: none;padding:0}
+.sliding{background: #fff;color: #000;margin-top: 6px}
+.sliding .sliding-menu{
+    position: relative;
+    padding: 10px 0 10px 30px;
+    cursor: pointer;
+    -webkit-transition:0.3s;
+    -moz-transition:0.3s;
+    -ms-transition:0.3s;
+    -o-transition:0.3s;
+    transition:0.3s;
+}
+.sliding .sliding-menu:hover{ background: #afe8e6;}
+.sliding .actSling{background: #38c5c0;color:#fff}
+.sliding .actSling:hover{ background: #38c5c0;color:#fff}
+.sliding li ul  .sliding-menu{padding: 10px 0 10px 50px}
+.sliding ul  ul  li .sliding-menu{padding: 10px 0 10px 70px}
+.sliding ul  ul ul li .sliding-menu{padding: 10px 0 10px 90px}
+.sliding .sliding-menu .iconfont{position: absolute;top:50%;margin-top:-9px;left: 10px;}
+.sliding ul li .sliding-menu .iconfont{left: 30px;}
+.sliding ul li ul li .sliding-menu .iconfont{left: 50px;}

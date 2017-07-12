@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0054)http://www.qq.com/coral/coralBeta2/coralMainDom2.0.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    
+    <title>评论组件</title>
+
+    <script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+
+
+    <script type="text/javascript" src="coral_v3.5.9.4.min.js"></script>
+
+    <script type="text/javascript" src="wmx1.6.3.min.js"></script>
+
+    <style type="text/css">
+    #top_reply h1 span a{float:none}
+
+    .wm-box {
+        padding:10px 0;
+        margin:0;
+    }
+    .wm-box .wm-tit {
+    }
+    .wm-box .wm-tit h3 {
+        background:url(http://mat1.gtimg.com/www/niuping2013/images/wm_icon.png) no-repeat 0 2px;
+        height:30px;
+        line-height:30px;
+        border-bottom:1px solid #dddddd;
+    }
+    .wm-box .wm-tit h3 strong {
+        display:none;
+    }
+    .wm-box .wm-tit h3 a.wm-more {
+        float:right;
+        font-weight:normal;
+        color:#888;
+        text-decoration:none;
+        font-size:12px;
+        display:inline-block;
+        padding:0 2px;
+    }
+    .wm-box .wm-tit h3 a:hover {
+        color:#1A649D;
+        text-decoration:none
+    }
+    .wm-box .wm-list {
+        background:url(http://mat1.gtimg.com/www/niuping2013/images/wm_icon.png) no-repeat 0 -42px;
+        margin-top:10px;
+    }
+    .wm-box .wm-list li {
+        height:36px;
+        line-height:36px;
+        padding-left:50px;
+    }
+    .wm-box .wm-list li a, .wm-box .wm-list li a:visited {
+        font-size:16px;
+        font-weight:bold;
+        color:#1A649D;
+        text-decoration:none
+    }
+    .wm-box .wm-list li a:hover {
+        text-decoration:underline;
+        color:#1A649D
+    }
+    .wm-box .wm-list li .detail {
+        float:right;
+        font-size:12px;
+    }
+    .wm-box .wm-list li .detail span {
+        color:#116bb1;
+        display:inline-block;
+        padding-right:13px;
+    }
+    </style>
+
+
+    <script type="text/javascript">
+    var hd = document.getElementsByTagName('head').item(0);
+    var date = new Date();
+    var myScript = document.createElement("script");
+    myScript.type = "text/javascript";
+
+    //myScript.src="http://mat1.gtimg.com/www/coral2.0/js/coral_v2.37.js?v" + date.getDate();
+
+    //mainIframeNew.js  - 本地测试用
+
+    hd.appendChild(myScript);
+    var myCss = document.createElement("link");
+    myCss.rel = "stylesheet";
+    myCss.type = 'text/css';
+    myCss.media = "screen";
+    myCss.href = "http://mat1.gtimg.com/www/coral2.0/css/coral_v9.6.6.css?v" + date.getDate();
+    hd.appendChild(myCss);
+
+    //http://mat1.gtimg.com/www/coral2.0/js/coral_v2.0.js
+    //http://mat1.gtimg.com/www/coral2.0/css/coral_v2.0.css
+    </script><script type="text/javascript"></script><link rel="stylesheet" type="text/css" media="screen" href="coral_v9.6.6.css">
+
+
+
+    <style>
+    #linshi { margin-right:0px }
+    #linshi a { font-size:12px; color:#FF2968; margin-top:5px; padding-right: 5px; }
+    #linshi a:hover { text-decoration:none }
+    
+    .np-title .np-index-link{margin-right: 18px;color: #FF2968;}
+
+    #myCowComment{margin-right:5px}
+  	#top_reply h1 span{float:left;font-size:13px;margin-left:10px;color:#c2c0c0}
+	#top_reply h1 span a:hover{color:#df7070}
+	#top_reply h1 span a{color:#c2c0c0;font-size:13px}
+
+    </style>
+</head>
+
+<body>
+
+
+    <div id="mainBody" class="np-frame" style="padding-bottom: 0px; width: 100%;">
+
+        <!----评论框---->
+
+        <div id="top_reply">
+
+            <h1 class="np-title">
+                <a href="http://coral.qq.com/1034613210" id="commentTotleNum" target="_blank" hidefocus="true"><span>1362条评论</span></a>
+                <a href="http://www.qq.com/coral/coralindex/indexCoral_new.htm" target="_blank" class="np-index-link" hidefocus="true">腾讯牛评</a>
+                <strong>网友评论</strong>
+                <span>文明上网理性发言，请遵守<a href="http://www.qq.com/coral/coralBeta2/coralinfo.htm" target="_blank" hidefocus="true">新闻评论服务协议</a></span>
+            </h1>
+
+            <div id="commentArea" class="out">
+
+                <div class="np-reply-box blueLight np-reply-box-active" id="np-reply-box" style="height:120px">
+
+                    <div class="np-reply-box-content textarea">
+                        <textarea tabindex="1" autocomplete="off" name="content" accesskey="u" id="top_textarea" style="height: 60px; padding: 10px;"></textarea>
+                    </div>
+
+
+                    <div class="commtSub np-reply-box-footer" style="position:relative;display:block;height:40px" id="p_login_btn">
+                        <!-- 用户登录模块 -->
+
+                        <div class="np-login" id="loginFlag">
+
+                            <img width="35" height="35" class="np-avatar" src="">
+                            <span class=""><em class="np-user"></em><a class="" href="http://film.qq.com/vip.html" target="_blank" hidefocus="true"></a></span>
+                            <a href="javascript:void(0)" class="np-btn change" hidefocus="true">切换帐户</a>
+
+                        </div>
+
+                        <div class="submitBtn">
+
+                            <a href="javascript:void(0)" class="np-btn np-btn-submit" id="top_post_btn" hidefocus="true">登录</a>
+                            <span class="np-tip-error" style="display:none"></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!----评论显示列表---->
+
+        <div id="content">
+            <ul class="np-nav-tab">
+                <li id="myAllComment" class="np-active">全部评论</li>
+                <li id="myCowComment">我的牛评
+                    <span id="popMsg" class="np-tip-num"></span>
+                </li>
+                <li id="linshi" style="float:right"><a href="http://www.qq.com/coral/coralindex/indexCoral_new.htm" target="_blank" hidefocus="true">牛评：纵论天下大事</a>
+                </li>
+                <!---->
+            </ul>
+
+            <div id="tab1_allComments">
+                <!--页卡一 全部评论-->
+
+                <div id="order" class="np-order np-btngroup"><a data-sort="time" href="javascript:void(0)" class="np-active" hidefocus="true">时间</a><a data-sort="quality" href="javascript:void(0)" hidefocus="true">热度</a>
+                </div>
+                <!--推荐评论-->
+
+
+                <div id="showNum" class="showNum">
+
+                    <span></span>
+
+                </div>
+
+                <div id="allComments">
+
+                    <ul class="post-list np-comment-list"><li class="np-title-hot">热门评论</li><li class="np-post   topAll  " id="top_5938159568987706073"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="13778912" src="g" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_top_5938159568987706073">举报</a><span class=""><a href="javascript:void(0)" title="真傻了吗？" class="np-user popClick " post_uid="13778912">真傻了吗？</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1415767566">2014-11-12</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>我也是中不溜，有几个选择我知道出题者的答案是啥，但我不同意，就是不选！</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5938159568987706073">(<em>122</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>2</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post   topAll  " id="top_5938277758141029680"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="11193824" src="g(1)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_top_5938277758141029680">举报</a><span class=""><a href="javascript:void(0)" title="zsp53" class="np-user popClick " post_uid="11193824">zsp53</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1415795745">2014-11-12</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>sigen其实就是厮跟。有这个词。</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5938277758141029680">(<em>11</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>10</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post   topAll  " id="top_5938175219965958570"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="110175416" src="46" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_top_5938175219965958570">举报</a><span class=""><a href="javascript:void(0)" title="简单" class="np-user popClick " post_uid="110175416">简单</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1415771298">2014-11-12</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>真的应该在家多呆一阵子啦！！自个的家乡就答不完全真是汗颜呢！！！！</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5938175219965958570">(<em>13</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>1</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post   topAll  " id="top_5938130316925932928"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="11525117" src="g(2)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_top_5938130316925932928">举报</a><span class=""><a href="javascript:void(0)" title="夏天的爱人叫西瓜 &#128158;" class="np-user popClick " post_uid="11525117">夏天的爱人叫西瓜 &#128158;</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1415760592">2014-11-12</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>我86分 话语就几个 完全代表不了河南。</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5938130316925932928">(<em>40</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>1</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post   topAll  " id="top_5938174819779025044"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="65901650" src="g(3)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_top_5938174819779025044">举报</a><span class=""><a href="javascript:void(0)" title="ㄗs:侢涀過厾" class="np-user popClick " post_uid="65901650">ㄗs:侢涀過厾</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1415771202">2014-11-12</span></div><div class="np-post-content" data-height="5" style=""><p>晕，才61</p></div><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5938174819779025044">(<em>17</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>4</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post   topAll  " id="top_5938218078765125967"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="98908789" src="g.gif" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_top_5938218078765125967">举报</a><span class=""><a href="javascript:void(0)" title="枭雄" class="np-user popClick " post_uid="98908789">枭雄</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1415781516">2014-11-12</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>出题的你知道老绑在河南是什么工具吗？罩头子是什么工具吗？</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5938218078765125967">(<em>19</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>4</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post   topAll topno " id="top_5938280831831857012"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="53162034" src="g(4)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_top_5938280831831857012">举报</a><span class=""><a href="javascript:void(0)" title="洋洋" class="np-user popClick " post_uid="53162034">洋洋</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1415796478">2014-11-12</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>河南老家！好想你！</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5938280831831857012">(<em>18</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post   topAll topno " id="top_5938182584119412608"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="11614026" src="g(5)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_top_5938182584119412608">举报</a><span class=""><a href="javascript:void(0)" title="～网事如梦～" class="np-user popClick " post_uid="11614026">～网事如梦～</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1415773054">2014-11-12</span></div><div class="np-post-content" data-height="5" style=""><p>我73分中不溜</p></div><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5938182584119412608">(<em>16</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post   topAll topno " id="top_5938278704367609106"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="59848367" src="g(6)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_top_5938278704367609106">举报</a><span class=""><a href="javascript:void(0)" title="远方" class="np-user popClick " post_uid="59848367">远方</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1415795971">2014-11-12</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>麻痹，才37分。</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5938278704367609106">(<em>8</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post   topAll topno  noborder" id="top_5938210791388423403"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="40266479" src="g(7)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_top_5938210791388423403">举报</a><span class=""><a href="javascript:void(0)" title="§遗※忘§" class="np-user popClick " post_uid="40266479">§遗※忘§</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1415779779">2014-11-12</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>我测啦！是个中不溜</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5938210791388423403">(<em>12</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-title-new">最新评论</li><li class="np-post    topno " id="comment_6046160025747535773"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="64230002" src="g(8)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_comment_6046160025747535773">举报</a><span class=""><a href="javascript:void(0)" title="韬光养晦" class="np-user popClick " post_uid="64230002">韬光养晦</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1441516882">2015-9-6</span></div><div class="np-post-content" data-height="5" style=""><p>我爱鹤壁</p></div><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_6046160025747535773">(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post    topno " id="comment_6041496046454508376"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="257941390" src="g(9)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_comment_6041496046454508376">举报</a><span class=""><a href="javascript:void(0)" title="杨扬" class="np-user popClick " post_uid="257941390">杨扬</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1440404903">2015-8-24</span></div><div class="np-post-content" data-height="5" style=""><p>TEST</p></div><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_6041496046454508376">(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post    topno " id="comment_6040318402459403720"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="255703235" src="g(10)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_comment_6040318402459403720">举报</a><span class=""><a href="javascript:void(0)" title="勇往直前" class="np-user popClick " post_uid="255703235">勇往直前</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1440124130">2015-8-21</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>竟然还有我的家乡，新郑</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_6040318402459403720">(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post    topno " id="comment_6040318261027472546"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="255703235" src="g(10)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_comment_6040318261027472546">举报</a><span class=""><a href="javascript:void(0)" title="勇往直前" class="np-user popClick " post_uid="255703235">勇往直前</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1440124097">2015-8-21</span></div><div class="np-post-content" data-height="5" style=""><p>71分，中不溜</p></div><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_6040318261027472546">(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post    topno " id="comment_6011691643812009737"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="71656215" src="g(11)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_comment_6011691643812009737">举报</a><span class=""><a href="javascript:void(0)" title="　       Mr.Shy" class="np-user popClick " post_uid="71656215">　       Mr.Shy</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1433298979">2015-6-3</span></div><div class="np-post-content" data-height="5" style=""><p>什么鬼</p></div><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_6011691643812009737">(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post    topno " id="comment_6009509690241259403"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="79854610" src="g(12)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_comment_6009509690241259403">举报</a><span class=""><a href="javascript:void(0)" title="Ｓmile°/ty" class="np-user popClick " post_uid="79854610">Ｓmile°/ty</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1432778761">2015-5-28</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>怎么安阳这边没有呢？</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_6009509690241259403">(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post    topno " id="comment_6001913471012779284"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="1259907" src="g(13)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_comment_6001913471012779284">举报</a><span class=""><a href="javascript:void(0)" title="简亦" class="np-user popClick " post_uid="1259907">简亦</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1430967681">2015-5-7</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>这页面做的真恶心！！想看洛阳的点了八百年也看不成！！而且眼花缭乱！！</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_6001913471012779284">(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post    topno " id="comment_5985209897369273092"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="163414256" src="g(14)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_comment_5985209897369273092">举报</a><span class=""><a href="javascript:void(0)" title="亚蕾广告录音" class="np-user popClick " post_uid="163414256">亚蕾广告录音</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1426985239">2015-3-22</span></div><div class="np-post-content" data-height="5" style=""><p>,</p></div><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5985209897369273092">(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post    topno " id="comment_5983815504443803430"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="74093813" src="g(15)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_comment_5983815504443803430">举报</a><span class=""><a href="javascript:void(0)" title="猫er" class="np-user popClick " post_uid="74093813">猫er</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1426652790">2015-3-18</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>网页做的不错诶，学习中~~~</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5983815504443803430">(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li><li class="np-post    topno " id="comment_5980425155688072876"><div class="np-tip-newpost"></div><img class="np-avatar popClick" post_uid="157530150" src="g(16)" alt="头像"><div class="np-post-body"><div class="np-post-header"><a href="javascript:void(0)" class="np-btn np-btn-report report" id="report_comment_5980425155688072876">举报</a><span class=""><a href="javascript:void(0)" title="〆亾婹芣踭氣誰説嘟倣紕ゾ" class="np-user popClick " post_uid="157530150">〆亾婹芣踭氣誰説嘟倣紕ゾ</a><a href="http://film.qq.com/vip.html?ptag=v_qq_com.comment" target="_blank" class="" title="会员尊享红名特权"></a></span><a href="javascript:void(0)" class="replywho np-icon-reply-weak np-user" style="display:none"></a><span class="np-time" data="1425844468">2015-3-9</span></div><div class="np-post-content" data-height="5" style="height: 120px; overflow: hidden;"><p>人之初 性本善 长大成人就要干 !</p></div><a href="javascript:void(0)" class="spreadMoreBtn np-btn np-btn-spread"><i class="np-icon np-icon-spread"></i></a><div class="np-post-footer"><a href="javascript:void(0)" class="np-btn np-btn-upvote upvote" id="upvote_5980425155688072876">(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-reply reply">回复(<em>0</em>)</a><a href="javascript:void(0)" class="np-btn np-btn-newreply"></a></div></div><ul class="children"></ul></li></ul>
+                    <div class="tipInfo waitting" style="display: none;"></div>
+                    <!--loadding图标-->
+
+                </div>
+                <!-- 全部评论 -->
+
+
+                <div id="loadMore" class="np-load-more" style="display: block;">
+
+                    <span>加载更多</span>
+                    <em style="display: none;">没有更多了</em>
+
+                </div>
+
+            </div>
+
+            <div id="tab2_myComments" class=" my-comments" style="display:none">
+                <!--页卡二 我的牛评-->
+                <div class="np-btngroup np-btngroup-notice"><a href="javascript:void(0)" id="mytips" class="np-active" hidefocus="true">提醒</a><a id="mycon" href="javascript:void(0)" hidefocus="true">评论</a>
+                </div>
+
+                <div id="tab3_tips" class="dis">
+
+                    <div id="my-message" class="my-message">
+
+                        <div class="tipInfo waitting">
+
+                        </div>
+
+
+                        <ul id="my-message-list" class="post-list np-notice-list">
+
+                        </ul>
+
+                        <div class="np-load-more" id="loadMsgMore" style="display:none">
+                            <span>加载更多</span>
+                            <em style="display:none">没有更多了</em>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div id="tab4_mycon" style="display:none" class="undis">
+
+
+                    <div id="my-notification" class="my-notification ">
+
+                        <div class="tipInfo waitting">
+
+                        </div>
+                        <div class="np-person-info np-person-info-weak" id="myuserInfo" style="display:none">
+                            <img class="np-avatar" src="">
+                           <span class=""><em class="np-user">企鹅先生</em><a class="" href="" target="_blank" hidefocus="true"></a></span>
+                            <div>
+                                <span class="np-btn-area">
+                                    <em class="a">中国 北京 海淀</em>
+                                </span>
+                                <span class="np-btn-upvote">
+                                    <em class="b">0</em>
+                                </span>
+                                <span class="np-btn-reply">
+                                    <em class="c">1</em>
+                                </span>
+                            </div>
+                        </div>
+                        <ul id="my-notification-list" class="post-list np-timeline">
+
+                        </ul>
+
+
+                        <div class="np-load-more" id="loadCmtMore">
+
+                            <span>加载更多</span>
+                            <em style="display:none">没有更多了</em>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="hiddenCon" class="hiddenCon" style="display:none">
+
+
+        </div>
+
+        <!--弹出举报框-->
+
+
+        <div class="np-report" id="public_report" style="display:none">
+            <div class="np-report-header">
+                <h4>举报</h4>
+                <a href="javascript:void(0)" class="close" hidefocus="true"></a>
+            </div>
+            <div class="np-report-content">
+                <h5>
+                    <img src="transparent.gif">您为什么要举报此信息?</h5>
+                <ul>
+                    <li>
+                        <input name="impeach_content" id="content1" type="radio" value="1">
+                        <label for="content1">色情淫秽</label>
+                    </li>
+
+                    <li>
+                        <input name="impeach_content" id="content4" type="radio" value="8">
+                        <label for="content4">骚扰谩骂</label>
+                    </li>
+
+                    <li>
+                        <input name="impeach_content" id="content1024" type="radio" value="1024">
+                        <label for="content1024">广告欺诈</label>
+                    </li>
+
+                    <li>
+                        <input name="impeach_content" id="content16384" type="radio" value="2048">
+                        <label for="content16384">反动</label>
+                    </li>
+                    <li>
+                        <input name="impeach_content" id="content0" type="radio" value="0">
+                        <label for="content0">其他</label>
+                    </li>
+                </ul>
+                <div>
+                    <h6>举报说明（可选）：</h6>
+                    <input name="impeach_desc" value="描述恶意行为" style=" color:#bbb;" id="impeach_desc" type="text" maxlength="200/">
+                </div>
+            </div>
+            <div class="np-report-footer">
+                <a class="np-btn np-report-submit" href="javascript:void(0)" hidefocus="true">提交</a>
+                <a class="np-btn np-report-cancel" href="javascript:void(0)" hidefocus="true">取消</a>
+            </div>
+        </div>
+
+
+
+
+        <!--弹出评论框-->
+
+        <div class="pop_reply np-reply-box np-reply-box-inline" id="public_reply" style="display:none">
+
+            <div class="textarea np-reply-box-content">
+                <textarea tabindex="1" autocomplete="off" name="content" accesskey="u" id="top_textarea"></textarea>
+            </div>
+            <div class="commtSub" id="p_login_btn">
+
+
+
+                <div class="np-reply-box-footer">
+
+                    <div class="np-reply-box-info">
+
+                        <span class="tips"></span>
+
+                    </div>
+
+                    <a href="javascript:void(0)" class="submit np-btn np-btn-submit" id="pop_post_btn" hidefocus="true">登录</a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!--遮罩层-->
+    <div class="maskObj" id="maskObj">
+    </div>
+
+
+
+
+
+
+<!--[if !IE]>|xGv00|7c2c6294e8c2fd65a73fa21c6adea73f<![endif]--></body></html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #eee;
+            margin: 1px;
+            padding: 5px 10px;
+        }
+
+        .sortable-ghost {
+            opacity: .6;
+        }
+    </style>
+</head>
+<body>
+
+<ul id="foo">
+    <li>foo 1</li>
+    <li>foo 2</li>
+    <li>foo 3</li>
+</ul>
+
+<ul id="bar">
+    <li>bar 1</li>
+    <li>bar 2</li>
+    <li>bar 3</li>
+</ul>
+
+</body>
+<script src="../Sortable.js"></script>
+<script>
+    var options = {
+        group: 'share',
+        animation: 100
+    };
+
+    events = [
+        'onChoose',
+        'onStart',
+        'onEnd',
+        'onAdd',
+        'onUpdate',
+        'onSort',
+        'onRemove',
+            'move'
+    ].forEach(function (name) {
+        options[name] = function (evt) {
+            console.log({
+                'event': name,
+                'this': this,
+                'item': evt.item,
+                'from': evt.from,
+                'to': evt.to
+            });
+        };
+    });
+
+    Sortable.create(foo, options);
+    Sortable.create(bar, options);
+</script>
+</html>

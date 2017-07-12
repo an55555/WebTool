@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="../../Layout-GIT/style-l.css" rel="stylesheet" type="text/css">
+    <title>Title</title>
+</head>
+<body style="text-align: center">
+
+<span class="btn bg-primary" onclick="WebSocketTest()" style="width: 181px;margin: 10px auto">启动WebSocket</span>
+<div>
+    <span class="btn bg-primary"  onclick="sendMessage()">开发获取数据</span>
+    <span class="btn bg-primary"  onclick="closeSocket()">关闭</span>
+</div>
+
+<div id="dataLine"></div>
+<style>
+    body{
+        /*background: #000;*/
+    }
+    #dataLine{
+        width: 200px;
+        height: 200px;
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        margin-left: -100px;
+        font-size: 100px;
+        transition: .7s;
+        box-shadow: 0 0 8px 2px #000;
+        border-radius: 50%;
+        line-height: 200px;
+    }
+</style>
+<script type="text/javascript">
+    var ws='';
+    if ("WebSocket" in window)
+    {
+        alert("您的浏览器支持 WebSocket!")
+        WebSocketTest();
+    }else{
+        alert("您的浏览器不支持 WebSocket!");
+    }
+    function WebSocketTest()
+    {
+        // 打开一个 web socket
+        ws = new WebSocket("ws://localhost:8888");
+        ws.onopen = function()
+        {
+            // Web Socket 已连接上，使用 send() 方法发送数据
+//                ws.send("发送数据");
+            alert("Web Socket 已连接上...");
+        };
+        ws.onmessage = function (evt)
+        {
+            var received_msg = evt.data;
+            console.log("数据已接收..."+ evt.data);
+            viewLine(evt.data)
+        };
+
+        ws.onclose = function()
+        {
+            // 关闭 websocket
+            alert("连接已关闭...");
+        };
+        ws.onerror=function (evt) {
+            alert("连接失败...");
+            console.log(evt)
+        }
+    }
+    function sendMessage() {
+        ws.send("开始给我数据吧");
+    }
+    function closeSocket() {
+        ws.close();
+    }
+    function viewLine(data) {
+        console.log(data)
+        document.getElementById('dataLine').innerHTML=data;
+//        document.getElementById('dataLine').borderRadius=data*10+'%';
+        document.getElementById('dataLine').style.borderRadius=data*10+'%';
+    }
+</script>
+</body>
+</html>

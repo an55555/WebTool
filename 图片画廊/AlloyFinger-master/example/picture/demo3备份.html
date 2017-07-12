@@ -1,0 +1,444 @@
+﻿<!--用transform代替left-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<title>Swiper中文网基础演示(www.swiper.com.cn)</title>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<!--Swiper3.0.4-->
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.imgGallery{
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			overflow: hidden;
+		}
+		.transform-container{
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+		}
+		.transform-con {
+			color: #fff;
+			font-size: 36px;
+			text-align: center;
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		.transform-pre, .transform-nex{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			left: 0;
+		}
+		.transform-pre{
+			transform: translateX(-100%);
+		}
+		.transform-nex{
+			transform: translateX(100%);
+		}
+		.transform-timer
+		{
+			-webkit-transition: 0.5s;
+			-moz-transition: 0.5s ;
+			-ms-transition: 0.5s ;
+			-o-transition: 0.5s ;
+			transition: 0.5s ;
+		}
+		.blue-slide {
+			background: #000;
+		}
+		.red-slide {
+			background: #000;
+		}
+		.orange-slide {
+			background: #000;
+		}
+
+
+		.display-box{
+			display:-moz-box;
+			display:-webkit-box;
+			display:box;
+			-moz-box-orient:vertical;
+			-webkit-box-orient:vertical;
+			box-orient:vertical;
+			box-pack: center;
+			box-align: center;
+			-webkit-box-pack: center;
+			-webkit-box-align: center;
+			-moz-box-pack: center;
+			-moz-box-align: center;
+			-moz-box-pack: center;
+			-webkit-box-pack: center;
+			-webkit-box-align: center;
+		}
+		.display-box img{
+			display: block;
+			max-height: 100%;
+			width: auto;
+			max-width: 100%;
+			height: auto;
+		}
+		#btn1{
+			position: fixed;
+			width: 100%;
+			background: rgba(0,0,0,0.6);
+			color: #fff;
+			text-align: center;
+			padding: 20px 0;
+			bottom: 0px;
+			z-index: 10;
+		}
+		#btn2{
+			position: fixed;
+			width: 100%;
+			background: rgba(0,0,0,0.6);
+			color: #fff;
+			text-align: center;
+			padding: 20px 0;
+			top: 0px;
+			z-index: 10;
+		}
+	</style>
+</head>
+<body>
+<div class="imgGallery">
+	<div class="transform-container">
+		<div class="transform-pre red-slide display-box"><img src="1224.jpg"  alt=""/></div>
+		<div class="transform-con blue-slide display-box">    <img src="../../asset/cover.jpg" id="testImg" alt="" /></div>
+		<div class="transform-nex orange-slide display-box">    <img src="./1324.jpg" alt="" /></div>
+	</div>
+</div>
+
+<div id="btn1">
+
+</div>
+<div id="btn2">
+</div>
+<script src="transform.js"></script>
+<script src="alloy_finger.js"></script>
+<script src="image_loaded.js"></script>
+<script src="to.js"></script>
+
+<!--<script src="js/swiper.min.js"></script>-->
+<script type="text/javascript">
+	function whichTransitionEvent(){
+		var t;
+		var el = document.createElement('fakeelement');
+		var transitions = {
+			'transition':'transitionend',
+			'OTransition':'oTransitionEnd',
+			'MozTransition':'transitionend',
+			'WebkitTransition':'webkitTransitionEnd',
+			'MsTransition':'msTransitionEnd'
+		}
+		for(t in transitions){
+			if( el.style[t] !== undefined ){
+				return transitions[t];
+			}
+		}
+	}
+	var transEndEventName = whichTransitionEvent();
+	$('.transform-container').bind(transEndEventName, function(){
+		$('.transform-container').removeClass('transform-timer');
+		var value = [
+			'translate3d(' + 0 + 'px, ' + transform.translate.y + 'px, 0)'
+		];
+		$('.transform-container').css('transform',value);
+		preSrc=$(".transform-pre img").attr('src');
+		nexSrc=$(".transform-nex img").attr('src');
+		midSrc=$("#testImg").attr('src');
+
+		if(dir!=0){
+			new To(el, "translateX", 0, 0, ease);
+			new To(el, "translateY", 0, 0, ease);
+			new To(el, "scaleX", 1, 0, ease);
+			new To(el, "scaleY", 1, 0, ease);
+			new To(el, "rotateZ", 0, 0, ease);
+		}
+		if(dir<0){
+			$('#testImg').attr('src',nexSrc)
+			$(".transform-pre img").attr('src',midSrc)
+			$(".transform-nex img").attr('src',preSrc);
+
+		}else if(dir>0){
+			$('#testImg').attr('src',preSrc);
+			$(".transform-pre img").attr('src',nexSrc);
+			$(".transform-nex img").attr('src',midSrc);
+		}
+		START_X=0;
+		if(dir!=0){
+			imgW=$('#testImg').width();
+			imgH=$('#testImg').height();
+			var rate;
+			if (imgH / imgW>= $('.transform-con').width() / $('.transform-con').height()) {
+				rate = imgH / $('.transform-con').width();
+			} else {
+				rate = imgW / $('.transform-con').height();
+			}
+			userScale=1/rate;
+		}
+		//		获取旋转后的最小缩放值
+	});
+	var preSrc=$(".transform-pre img").attr('src');
+	var nexSrc=$(".transform-nex img").attr('src');
+	var midSrc=$("#testImg").attr('src');
+	var transform;
+	var START_X=0;
+	var START_Y=0;
+	var START_Z=0;
+	var nowIndex=0;
+	var dir=1; //滑动方向
+	var isChange=false //判断运动状态
+	var moveWid=$('.transform-container').width();
+	transform = {
+		translate: { x: START_X, y: START_Y,z:START_Z},
+	};
+
+</script>
+<script>
+	var topPx;
+	var delaySlide=0;
+	var userScale=1;
+	var userS=1;
+	var imgW=$('#testImg').width();
+	var imgH=$('#testImg').height();
+	imageLoaded("#testImg",function(w,h){
+		topPx=window.innerHeight/2-(h*window.innerWidth/w)/2;
+//		获取旋转后的最小缩放值
+		var rate;
+		if (imgH / imgW>= $('.transform-con').width() / $('.transform-con').height()) {
+			 rate = imgH / $('.transform-con').width();
+		} else {
+			 rate = imgW / $('.transform-con').height();
+		}
+		userScale=1/rate;
+	});
+	function ease(x) {
+		return Math.sqrt(1 - Math.pow(x - 1, 2));
+	}
+	var el=$('#testImg')[0];
+	Transform(el);
+	var initScale = 1;
+	new AlloyFinger(el, {
+		multipointStart: function () {
+			To.stopAll();
+			initScale = el.scaleX;
+		},
+		rotate: function (evt) {
+			if(START_X!=0){
+				return
+			}
+			el.rotateZ += evt.angle;
+		},
+		pinch: function (evt) {
+			if(START_X!=0){
+				return
+			}
+			el.scaleX = el.scaleY = initScale * evt.scale;
+//			缩放时临界位置处理
+			if(el.scaleX>1){
+				if($('#testImg').position().left>0||$('#testImg').position().top>0){
+					new To(el, "translateX", 0, 500, ease);
+					new To(el, "translateY", 0, 500, ease);
+				}
+				if($('#testImg').position().left<-($('#testImg').width()-$('.transform-con').width())||$('#testImg').position().top<-($('#testImg').height()-$('.transform-con').height())){
+					new To(el, "translateX", 0, 500, ease);
+					new To(el, "translateY", 0, 500, ease);
+				}
+			}
+			delaySlide=0;
+		},
+		multipointEnd: function (evt) {
+			console.log(To)
+//			容器是否移动
+			if(Math.abs(START_X)>$('.transform-container').width()/2){
+				var value = [
+					'translate3d(' +$('.transform-container').width()*dir + 'px, ' + transform.translate.y + 'px, 0)'
+				];
+				$('.transform-container').addClass('transform-timer');
+				$('.transform-container').css('transform',value);
+			}else{
+				var value = [
+					'translate3d(' + 0+ 'px, ' + transform.translate.y + 'px, 0)'
+				];
+				$('.transform-container').addClass('transform-timer');
+				$('.transform-container').css('transform',value);
+				dir=0;
+			}
+
+			To.stopAll();
+			var rotation = el.rotateZ % 360;
+			if (rotation < 0)rotation = 360 + rotation;
+			el.rotateZ=rotation;
+			if (rotation > 0 && rotation < 45) {
+				userS=1;
+				new To(el, "rotateZ", 0, 500, ease);
+			} else if (rotation >= 315) {
+				userS=1;
+				new To(el, "rotateZ", 360, 500, ease);
+			} else if (rotation >= 45 && rotation < 135) {
+				userS=userScale
+				new To(el, "rotateZ", 90, 500, ease);
+			} else if (rotation >= 135 && rotation < 225) {
+				userS=1
+				new To(el, "rotateZ", 180, 500, ease);
+			} else if (rotation >= 225 && rotation < 315) {
+
+				userS=userScale
+				new To(el, "rotateZ", 270, 500, ease);
+			}
+
+			if(el.scaleX <= 1){
+				new To(el, "translateX", 0, 500, ease);
+				new To(el, "translateY", 0, 500, ease);
+			}
+			if (el.scaleX < userS) {
+				new To(el, "scaleX", userS, 500, ease,function(){});
+				new To(el, "scaleY", userS, 500, ease);
+			}
+//			缩放后再出现的滑动甩尾
+			if (el.scaleX < 3&&el.scaleX > 1) {
+				new To(el, "scaleX", el.scaleX, 500, ease,function(){delaySlide=200;});
+				new To(el, "scaleY", el.scaleX, 500, ease);
+			}
+			if (el.scaleX > 3) {
+				new To(el, "scaleX", 3, 500, ease,function(){delaySlide=200;});
+				new To(el, "scaleY", 3, 500, ease);
+			}
+		},
+		pressMove: function (evt) {
+			if(evt.deltaX>0){
+				if($('#testImg').position().left>=0){
+					el.translateX +=0;
+					START_X+= evt.deltaX;
+					var value = [
+						'translate3d(' + START_X + 'px, ' + transform.translate.y + 'px, 0)'
+					];
+					$('.transform-container').removeClass('transform-timer');
+					$('.transform-container').css('transform',value);
+					dir=1
+				}else{
+					el.translateX += evt.deltaX;
+				}
+			}
+			if(evt.deltaX<0){
+				if($('#testImg').position().left<=-($('#testImg').width()-$('.transform-con').width())){
+					el.translateX +=0;
+					START_X+= evt.deltaX;
+					var value = [
+						'translate3d(' + START_X + 'px, ' + transform.translate.y + 'px, 0)'
+					];
+					$('.transform-container').removeClass('transform-timer');
+					$('.transform-container').css('transform',value);
+					dir=-1
+				}else{
+					el.translateX += evt.deltaX;
+				}
+			}
+
+			if(evt.deltaY>0){
+				if($('#testImg').position().top>=0){
+					el.translateY +=0;
+				}else{
+					el.translateY += evt.deltaY;
+				}
+			}
+			if(evt.deltaY<0){
+				if($('#testImg').position().top<=-($('#testImg').height()-$('.transform-con').height())){
+					el.translateY +=0;
+				}else{
+					el.translateY += evt.deltaY;
+				}
+			}
+
+			evt.preventDefault();
+		},
+		tap: function (evt) {
+			//console.log(el.scaleX + "_" + el.scaleY + "_" + el.rotateZ + "_" + el.translateX + "_" + el.translateY);
+			//console.log("tap");
+		},
+		doubleTap: function (evt) {
+			To.stopAll();
+			if (el.scaleX > 1.5) {
+				new To(el, "scaleX", 1, 500, ease,function(){delaySlide=0;});
+				new To(el, "scaleY", 1, 500, ease);
+				new To(el, "translateX", 0, 500, ease);
+				new To(el, "translateY", 0, 500, ease);
+			} else {
+				var box = el.getBoundingClientRect();
+				var y = box.height - (( evt.changedTouches[0].pageY - topPx) * 2) - (box.height / 2 - ( evt.changedTouches[0].pageY - topPx));
+				var x = box.width - (( evt.changedTouches[0].pageX) * 2) - (box.width / 2 - ( evt.changedTouches[0].pageX));
+				new To(el, "scaleX", 2, 500, ease,function(){delaySlide=200;});
+				new To(el, "scaleY", 2, 500, ease);
+//				new To(el, "translateX", x, 500, ease);
+//				new To(el, "translateY", y, 500, ease);
+			}
+			//console.log("doubleTap");
+		},
+		longTap: function (evt) {
+			//console.log("longTap");
+		},
+		singleTap:function(evt){
+
+//			$('#btn2').text('单机')
+		},
+		swipe: function (evt) {
+//			判断临界值 ，显示完整图片
+			if(el.scaleX<1){
+				return false
+			}
+
+			if(evt.direction=='Right'){
+//				已在左边界，向左滑动容器
+				if($('#testImg').position().left>=0){
+					return
+				}else if($('#testImg').position().left<=-delaySlide){
+					new To(el, "translateX", el.translateX+delaySlide, 500, ease);
+				}else if($('#testImg').position().left>-delaySlide&&$('#testImg').position().left<0){
+					new To(el, "translateX", el.translateX+Math.abs($('#testImg').position().left), 500, ease);
+				}
+			}else if(evt.direction=='Left'){
+				//				已在右边界，向右滑动容器
+				var _Left=$('#testImg').width()-$('.transform-con').width();
+				if(_Left-Math.abs($('#testImg').position().left)<=0){
+					return
+				}else if(_Left-Math.abs($('#testImg').position().left)>=delaySlide){
+					new To(el, "translateX", el.translateX-delaySlide, 500, ease);
+				}else if(_Left-Math.abs($('#testImg').position().left)<delaySlide&&_Left-Math.abs($('#testImg').position().left)>0){
+					new To(el, "translateX",el.translateX-(_Left-Math.abs($('#testImg').position().left)), 500, ease);
+				}
+			}
+			if(evt.direction=='Down'){
+				if($('#testImg').position().top<=-delaySlide){
+					new To(el, "translateY", el.translateY+delaySlide, 500, ease);
+				}else if($('#testImg').position().top>-delaySlide&&$('#testImg').position().top<=0){
+					new To(el, "translateY", el.translateY+Math.abs($('#testImg').position().top), 500, ease);
+				}
+
+			}else if(evt.direction=='Up'){
+				var _height=$('#testImg').height()-$('.transform-con').height();
+				if(_height-Math.abs($('#testImg').position().top)>=delaySlide){
+					new To(el, "translateY", el.translateY-delaySlide, 500, ease);
+				}else if(_height-Math.abs($('#testImg').position().top)<delaySlide&&_height-Math.abs($('#testImg').position().top)>=0){
+					new To(el, "translateX",el.translateX-(_height-Math.abs($('#testImg').position().top)), 500, ease);
+				}
+			}
+
+		}
+	});
+</script>
+</body>
+</html>

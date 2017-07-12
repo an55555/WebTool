@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h3{margin: 0}
+        .list-group-item{padding: 5px 8px;border: solid 1px #eee;margin: 20px}
+        .list-group{margin-bottom: 30px}
+        .ghost {
+            opacity: .5;
+            background: #C8EBFB;
+
+        }
+
+    </style>
+</head>
+<body>
+<h3>可移动</h3>
+<!-- sort: true -->
+<div id="simpleList" class="list-group">
+    <div class="list-group-item">foo</div>
+    <div class="list-group-item">bar</div>
+    <div class="list-group-item">baz</div>
+</div>
+
+
+</body>
+<script src="../Sortable.js"></script>
+<script>
+    // sort: true
+    Sortable.create(simpleList, {
+        ghostClass: 'ghost'
+    });
+    simpleList.innerHTML = Array.apply(null,  new Array(100)).map(function (v, i) {
+        return '<div class="list-group-item">item ' +
+                (i + 1) +
+                '</div>';
+    }).join('');
+</script>
+</html>

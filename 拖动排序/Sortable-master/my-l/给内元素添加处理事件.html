@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h3{margin: 0}
+        .list-group-item{padding: 5px 8px;border: solid 1px #eee;margin: 20px}
+        .list-group{margin-bottom: 30px}
+    </style>
+</head>
+<body>
+
+<ul id="listWithHandle">
+    <li><span class="my-handle">::</span> list item text one<span class="js-remove">js-remove</span><span class="js-edit">js-edit</span></li>
+    <li><span class="my-handle">::</span> list item text TT<span class="js-remove">js-remove</span><span class="js-edit">js-edit</span></li>
+</ul>
+
+</body>
+<script src="../Sortable.js"></script>
+<script>
+    Sortable.create(listWithHandle, {
+        filter: ".js-remove, .js-edit",
+        onFilter: function (evt) {
+            var item = evt.item,
+                    ctrl = evt.target;
+
+            if (Sortable.utils.is(ctrl, ".js-remove")) {  // Click on remove button
+                item.parentNode.removeChild(item); // remove sortable item
+            }
+            else if (Sortable.utils.is(ctrl, ".js-edit")) {  // Click on edit link
+                // ...
+                console.log('这是啥')
+            }
+        }
+    })
+</script>
+</html>

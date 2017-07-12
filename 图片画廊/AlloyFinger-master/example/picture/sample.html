@@ -1,0 +1,351 @@
+﻿<!--当有放大的情况下，向一方向移动时，手指不放开再左移动，有BUG-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Swiper中文网基础演示(www.swiper.com.cn)</title>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/swiper.min.css">
+<!--Swiper3.0.4-->
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+.transform-container{
+	/*overflow: inherit;*/
+	/*overflow: hidden;*/
+	/*margin: 0 auto;*/
+	/*position: relative;*/
+	z-index: 1;
+	/*width: moveWidpx;*/
+	/*height: 300px;*/
+	/*width: 100%;*/
+	/*height: 100%;*/
+	/*position: absolute;*/
+	/*left: 0;*/
+	width: 100px;
+	height: 100px;
+	margin: 50px auto;
+
+}
+.transform-con {
+	color: #fff;
+	font-size: 36px;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.transform-pre, .transform-nex{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+}
+.transform-pre{
+	left: -100%;
+}
+.transform-nex{
+	right: -100%;
+}
+.transform-timer
+{
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s ;
+	-ms-transition: 0.5s ;
+	-o-transition: 0.5s ;
+	transition: 0.5s ;
+}
+.blue-slide {
+	background: #4390EE;
+}
+.red-slide {
+	background: #CA4040;
+}
+.orange-slide {
+	background: #FF8604;
+}
+
+
+.display-box{
+	display:-moz-box;
+	display:-webkit-box;
+	display:box;
+	-moz-box-orient:vertical;
+	-webkit-box-orient:vertical;
+	box-orient:vertical;
+	box-pack: center;
+	box-align: center;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-moz-box-pack: center;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+}
+	.display-box img{
+		display: block;
+		/*width: 100%;*/
+	}
+</style>
+</head>
+<body>
+<div class="transform-container">
+	<div class="transform-pre red-slide display-box"><img src="http://image.tianjimedia.com/uploadImages/2013/141/44212E1S5015.jpg"  alt="" style="width: 100%;" /></div>
+	<div class="transform-con blue-slide display-box">    <img src="../../asset/cover.jpg" id="testImg" alt="" style="width: 100%;" /></div>
+	<div class="transform-nex orange-slide display-box">    <img src="http://static.yingyonghui.com/screenshots/615/615212_1.jpg" alt="" style="width: 100%;" /></div>
+</div>
+<!--<div id="btn1">-->
+<!--134314-->
+<!--</div>-->
+<script src="transform.js"></script>
+<script src="alloy_finger.js"></script>
+<script src="image_loaded.js"></script>
+<script src="to.js"></script>
+
+<!--<script src="js/swiper.min.js"></script>-->
+<script type="text/javascript">
+	function whichTransitionEvent(){
+		var t;
+		var el = document.createElement('fakeelement');
+		var transitions = {
+			'transition':'transitionend',
+			'OTransition':'oTransitionEnd',
+			'MozTransition':'transitionend',
+			'WebkitTransition':'webkitTransitionEnd',
+			'MsTransition':'msTransitionEnd'
+		}
+		for(t in transitions){
+			if( el.style[t] !== undefined ){
+				return transitions[t];
+			}
+		}
+	}
+	var transEndEventName = whichTransitionEvent();
+	$('.transform-container').bind(transEndEventName, function(){
+		console.log(24)
+		$('.transform-container').removeClass('transform-timer');
+		var value = [
+			'translate3d(' + 0 + 'px, ' + transform.translate.y + 'px, 0)'
+		];
+		$('.transform-container').css('transform',value);
+		 preSrc=$(".transform-pre img").attr('src');
+		 nexSrc=$(".transform-nex img").attr('src');
+		 midSrc=$("#testImg").attr('src');
+
+		if(dir>0){
+			$('#testImg').attr('src',nexSrc)
+			$(".transform-pre img").attr('src',midSrc)
+			$(".transform-nex img").attr('src',preSrc);
+//			$('#testImg').css('transform','perspective(500px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)');
+//			$('#testImg').css('WebkitTransform','perspective(500px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)');
+			new To(el, "translateX", 0, 0, ease);
+			new To(el, "translateY", 0, 0, ease);
+			new To(el, "scaleX", 1, 0, ease);
+			new To(el, "scaleY", 1, 0, ease);
+			new To(el, "rotateZ", 0, 0, ease);
+		}else if(dir<0){
+			$('#testImg').attr('src',preSrc)
+			$(".transform-pre img").attr('src',nexSrc)
+			$(".transform-nex img").attr('src',midSrc);
+//			$('#testImg').css('transform','perspective(500px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)');
+//			$('#testImg').css('WebkitTransform','perspective(500px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)');
+			new To(el, "translateX", 0, 0, ease);
+			new To(el, "translateY", 0, 0, ease);
+			new To(el, "scaleX", 1, 0, ease);
+			new To(el, "scaleY", 1, 0, ease);
+			new To(el, "rotateZ", 0, 0, ease);
+		}
+
+		 START_X=0;
+		iniX=0;
+
+
+	});
+	var preSrc=$(".transform-pre img").attr('src');
+	var nexSrc=$(".transform-nex img").attr('src');
+	var midSrc=$("#testImg").attr('src');
+	var transform;
+	var START_X=0;
+	var iniX=0;
+	var START_Y=0;
+	var START_Z=0;
+	var nowIndex=0;
+	var dir=1;
+	var moveWid=$('.transform-container').width()
+	transform = {
+		translate: { x: START_X, y: START_Y,z:START_Z},
+	};
+
+</script>
+<script>
+	var topPx;
+	imageLoaded("#testImg",function(w,h){
+//            document.querySelector("#imgBox").style.display="block";
+		topPx=window.innerHeight/2-(h*window.innerWidth/w)/2;
+//            this.style.top=topPx+"px";
+	});
+	function ease(x) {
+		return Math.sqrt(1 - Math.pow(x - 1, 2));
+	}
+	var el=$('#testImg')[0]
+	Transform(el);
+	var initScale = 1;
+	new AlloyFinger(el, {
+		multipointStart: function () {
+			To.stopAll();
+			initScale = el.scaleX;
+		},
+		rotate: function (evt) {
+			el.rotateZ += evt.angle;
+		},
+		pinch: function (evt) {
+			el.scaleX = el.scaleY = initScale * evt.scale;
+		},
+		multipointEnd: function () {
+		
+//			向左滑动
+			if(iniX!=START_X&&Math.abs(iniX-START_X)>Math.abs(moveWid/2)){
+				console.log(START_X)
+				if(START_X>0){
+					iniX=moveWid;
+					dir=-1
+				}else{
+					iniX=-moveWid;
+					dir=1
+				}
+			}else{
+				iniX=0;
+				dir=0
+			}
+			var value = [
+				'translate3d(' + iniX + 'px, ' + transform.translate.y + 'px, 0)'
+			];
+			$('.transform-container').addClass('transform-timer');
+			$('.transform-container').css('transform',value);
+			To.stopAll();
+			if(el.scaleX <= 1){
+				new To(el, "translateX", 0, 500, ease);
+				new To(el, "translateY", 0, 500, ease);
+			}
+			if (el.scaleX < 1) {
+				new To(el, "scaleX", 1, 500, ease);
+				new To(el, "scaleY", 1, 500, ease);
+			}
+			if (el.scaleX > 2) {
+
+				new To(el, "scaleX", 2, 500, ease);
+				new To(el, "scaleY", 2, 500, ease);
+			}
+			var rotation = el.rotateZ % 360;
+
+			if (rotation < 0)rotation = 360 + rotation;
+			el.rotateZ=rotation;
+
+			if (rotation > 0 && rotation < 45) {
+				new To(el, "rotateZ", 0, 500, ease);
+			} else if (rotation >= 315) {
+				new To(el, "rotateZ", 360, 500, ease);
+			} else if (rotation >= 45 && rotation < 135) {
+				new To(el, "rotateZ", 90, 500, ease);
+			} else if (rotation >= 135 && rotation < 225) {
+				new To(el, "rotateZ", 180, 500, ease);
+			} else if (rotation >= 225 && rotation < 315) {
+				new To(el, "rotateZ", 270, 500, ease);
+			}
+		},
+		pressMove: function (evt) {
+			$('.transform-container').removeClass('transform-timer');
+
+			console.log(START_X)
+//			if(evt.deltaX>0){
+//				START_X-=evt.deltaX;
+//
+//			}else{
+//				START_X+=evt.deltaX;
+//			}
+//		el.translateX += evt.deltaX;
+//		el.translateY += evt.deltaY;
+//			console.log(evt.deltaX)
+//			if($('#testImg').position().left>=0){
+//				parMove()
+//			}else if($('#testImg').position().left<=-(($('#testImg').width()-$('.transform-container').width()))) {
+//				parMove()
+//			}
+//			else{
+//				el.translateX += evt.deltaX;
+//				el.translateY += evt.deltaY;
+////				evt.preventDefault();
+//			}
+//			evt.preventDefault();
+//			if($('#testImg').position().left<=-(($('#testImg').width()-$('.transform-container').width()))){
+//				parMove()
+//			}else{
+//				el.translateX += evt.deltaX;
+//				el.translateY += evt.deltaY;
+//			}
+			if(evt.deltaX>0){
+				if($('#testImg').position().left>=0){
+					parMove()
+				}else{
+					el.translateX += evt.deltaX;
+					el.translateY += evt.deltaY;
+				}
+			}else if(evt.deltaX<0){
+				if($('#testImg').position().left<=-(($('#testImg').width()-$('.transform-container').width()))){
+					parMove()
+				}else{
+					el.translateX += evt.deltaX;
+					el.translateY += evt.deltaY;
+				}
+			}
+			evt.preventDefault();
+			function parMove(){
+				START_X+=evt.deltaX;
+				transformm = {
+					translate: {x: START_X, y: START_Y, z: START_Z},
+				}
+				var value = [
+					'translate3d(' + transformm.translate.x + 'px, ' + transformm.translate.y + 'px, 0)'
+				];
+				$('.transform-container').css('transform',value)
+				el.translateX += 0;
+				el.translateY += 0;
+			}
+		},
+		tap: function (evt) {
+			//console.log(el.scaleX + "_" + el.scaleY + "_" + el.rotateZ + "_" + el.translateX + "_" + el.translateY);
+			//console.log("tap");
+		},
+		doubleTap: function (evt) {
+			To.stopAll();
+			if (el.scaleX > 1.5) {
+				new To(el, "scaleX", 1, 500, ease);
+				new To(el, "scaleY", 1, 500, ease);
+				new To(el, "translateX", 0, 500, ease);
+				new To(el, "translateY", 0, 500, ease);
+			} else {
+				var box = el.getBoundingClientRect();
+				var y = box.height - (( evt.changedTouches[0].pageY - topPx) * 2) - (box.height / 2 - ( evt.changedTouches[0].pageY - topPx));
+				var x = box.width - (( evt.changedTouches[0].pageX) * 2) - (box.width / 2 - ( evt.changedTouches[0].pageX));
+				new To(el, "scaleX", 2, 500, ease);
+				new To(el, "scaleY", 2, 500, ease);
+//				new To(el, "translateX", x, 500, ease);
+//				new To(el, "translateY", y, 500, ease);
+			}
+			//console.log("doubleTap");
+		},
+		longTap: function (evt) {
+			//console.log("longTap");
+		},
+		swipe: function (evt) {
+			//console.log("swipe" + evt.direction);
+		}
+
+	});
+</script>
+</body>
+</html>

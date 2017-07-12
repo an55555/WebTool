@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="foo">
+    <li>foo 1</li>
+    <li>foo 2</li>
+    <li>foo 3</li>
+</ul>
+
+<ul id="bar">
+    <li>bar 1</li>
+    <li>bar 2</li>
+    <li>bar 3</li>
+</ul>
+
+<ul id="qux">
+    <li>qux 1</li>
+</ul>
+</body>
+<script src="../Sortable.js"></script>
+<script>
+    Sortable.create(foo, {
+        group: {
+            name:'foo',
+            pull:'clone'
+        },
+        animation: 100
+    });
+
+    Sortable.create(bar, {
+        group: 'bar',
+        animation: 100
+    });
+
+    Sortable.create(qux, {
+        group: {
+            name: 'qux',
+            put: ['foo', 'bar']
+        },
+        animation: 100
+    })
+</script>
+</html>
+
+<!--name: String — group name-->
+<!--pull: true|false|'clone' — ability to move from the list. clone — copy the item, rather than move.-->
+<!--put: true|false|["foo", "bar"] — whether elements can be added from other lists, or an array of group names from-->

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>fullPage</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Description...">
+    <meta name="keywords" content="keyword1,keyword2,keyword3..">
+    <meta name="author" content="rusherwang,396276123@qq.com">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link type="text/css" rel="stylesheet" href="css/index.css">
+
+
+</head>
+<!--[if lte IE 7]>      
+<body scroll="no"> 
+<![endif]-->
+<!--[if gt IE 7]><!--> 
+<body>
+<!--<![endif]-->
+<div id="start" style="z-index: 100">
+    <div class="loadingLine"></div>
+    <img src="images/begin.jpg">
+    <h3 class="fadeIn" style="width:100px;border: dashed 1px #000000;border-radius: 50px;margin: 0 auto;animation-duration: 0.7s;animation-delay: 2s;-webkit-animation-delay:2s;-webkit-animation-duration: 0.7s"><a id="beginClick" style="color: #000000">Go不Go?</a></h3>
+</div>
+<a href="javascript:playPause();"><img src="images/music_star.png" id="music_btn"> </a>
+<audio id="music" src="images/music.mp3" loop="loop"></audio >
+
+	<div id="pageContain">
+		<div class="page page1 current" >
+			<div class="contain">
+                <img src="images/onebg1.png" class="page1ImgBg" id="stopFir">
+                <p><small id="smallID"><br>啦啦啦啦<br> 琴的第21个生日<br>有丢丢大....<br></small>
+                    <span id="spanID">但在我心里永远是个长不大的小女孩</span>
+                </p>
+			</div>
+		</div>
+
+		<div class="page page2">
+			<div class="contain">
+                <div class="contain">
+                    <div class="phoBox">
+                        <h1 class="flipTxtY" style="animation-delay:2s;-webkit-animation-delay: 2s">老婆在成长</h1>
+                        <img src="images/4.png" class="flipOutY">
+                        <img src="images/8.png" class="flipInOutY" style="animation-delay:3s;animation-duration:4s;-webkit-animation-delay:3s;-webkit-animation-duration: 4s">
+                        <img src="images/5.png" class="flipInOutY" style="animation-delay:7s;animation-duration:4s;-webkit-animation-delay:7s;-webkit-animation-duration: 4s">
+                        <img src="images/7.png" class="flipInOutY" style="animation-delay:11s;animation-duration:4s;-webkit-animation-delay:11s;-webkit-animation-duration: 4s">
+                        <img src="images/6.png" class="flipInOutY" style="animation-delay:15s;animation-duration:4s;-webkit-animation-delay:15s;-webkit-animation-duration: 4s">
+                        <img src="images/9.png" class="flipInOutY" style="animation-delay:19s;animation-duration:4s;-webkit-animation-delay:19s;-webkit-animation-duration: 4s">
+                        <img src="images/3.png" class="flipInOutY" style="animation-delay:23s;animation-duration:4s;-webkit-animation-delay:23s;-webkit-animation-duration: 4s">
+                        <img src="images/1.png" class="flipLastOutY" style="animation-delay:27s;animation-duration:1s;-webkit-animation-delay:27s;-webkit-animation-duration: 2s">
+                        <h2 class="flipTxtY" style="animation-delay:13s;-webkit-animation-delay:13s;">还有我们</h2>
+                    </div>
+                </div>
+			</div>
+		</div>
+
+		<div class="page page3">
+			<div class="contain">
+                <div class="picBox">
+                    <img src="images/spring.jpg" class="fadeOut" style="animation-delay:2s;-webkit-animation-delay:2s;z-index:5;">
+                    <img src="images/summer.jpg" class="fadeOut" style="animation-delay:8s;-webkit-animation-delay:8s;z-index:4">
+                    <img src="images/autumn.jpg" class="fadeOut" style="animation-delay:14s;-webkit-animation-delay:14s;z-index:3">
+                    <img src="images/winter.jpg" class="fadeOut" style="animation-delay:20s;-webkit-animation-delay:20s;z-index:2 ">
+                    <img src="images/qin.jpg" class="animated" style="z-index: 1">
+                </div>
+                <h1 class="fadeInOut" style="animation-delay:2s;animation-duration: 5s;-webkit-animation-delay:2s;-webkit-animation-duration: 5s;z-index: 6"><small>时间在</small>走</h1>
+                <h1 class="fadeInOut"  style="animation-delay:9s;animation-duration: 5s;-webkit-animation-delay:9s;-webkit-animation-duration: 5s;z-index: 6">爱<small>你不变</small></h1>
+                <div class="head headSize" style="animation-delay:20s;-webkit-animation-delay:20s;z-index: 7"></div>
+			</div>
+		</div>
+
+		<div class="page page4" data-step="2">
+			<div class="contain">
+                <div class="page4ImgBox">
+                    <img src="images/pho/1.jpg" class="rain" style="animation-duration:2s;">
+                    <img src="images/pho/2.jpg" class="rain" style="animation-delay:1s;animation-duration:3s;-webkit-animation-delay:1s;-webkit-animation-duration: 3s">
+                    <img src="images/pho/3.jpg" class=" rain" style="animation-delay:3s;animation-duration:1s;-webkit-animation-delay:3s;-webkit-animation-duration: 1s">
+                    <img src="images/pho/4.jpg" class=" rain" style="animation-delay:4s;animation-duration:2s;-webkit-animation-delay:4s;-webkit-animation-duration: 2s">
+                    <img src="images/pho/5.jpg" class=" rain" style="animation-delay:4s;animation-duration:3s;-webkit-animation-delay:4s;-webkit-animation-duration: 3s">
+                    <img src="images/pho/6.jpg" class="rain " style="animation-delay:3s;animation-duration:2s;-webkit-animation-delay:3s;-webkit-animation-duration: 2s">
+                    <img src="images/pho/7.jpg" class="rain " style="animation-delay:4s;animation-duration:1s;-webkit-animation-delay:4s;-webkit-animation-duration: 1s">
+                    <img src="images/pho/9.jpg" class=" rain" style="animation-delay:5s;animation-duration:2s;-webkit-animation-delay:5s;-webkit-animation-duration: 2s">
+                    <img src="images/pho/10.jpg" class="rain " style="animation-delay:6s;animation-duration:1s;-webkit-animation-delay:6s;-webkit-animation-duration:1s">
+                    <img src="images/pho/11.jpg" class="rain " style="animation-delay:6s;animation-duration:2s;-webkit-animation-delay:6s;-webkit-animation-duration:2s">
+                    <img src="images/pho/12.jpg" class="rain" style="animation-delay:7s;animation-duration:2s;-webkit-animation-delay:7s;-webkit-animation-duration: 2s">
+                    <img src="images/pho/8.jpg" class="rain " style="animation-delay:6s;animation-duration:2s;-webkit-animation-delay:6s;-webkit-animation-duration: 2s">
+                    <img src="images/pho/13.jpg" class="rain " style="animation-delay:6s;animation-duration:2s;-webkit-animation-delay:6s;-webkit-animation-duration: 2s">
+                    <img src="images/pho/14.jpg" class="rain" style="animation-delay:7s;animation-duration:2s;-webkit-animation-delay:7s;-webkit-animation-duration: 2s">
+
+                    <img src="images/pho/10.jpg" class="rain " style="animation-delay:6s;animation-duration:1s;-webkit-animation-delay:6s;-webkit-animation-duration: 1s">
+                    <img src="images/pho/11.jpg" class="rain " style="animation-delay:6s;animation-duration:2s;-webkit-animation-delay:6s;-webkit-animation-duration: 2s">
+                    <img src="images/pho/12.jpg" class="rain " style="animation-delay:7s;animation-duration:2s;-webkit-animation-delay:7s;-webkit-animation-duration: 2s">
+
+                    <img src="images/pho/10.jpg" class="rain " style="animation-delay:6s;animation-duration:1s;-webkit-animation-delay:6s;-webkit-animation-duration: 1s">
+                    <img src="images/pho/11.jpg" class=" rain" style="animation-delay:6s;animation-duration:2s;-webkit-animation-delay:6s;-webkit-animation-duration: 2s">
+                    <img src="images/pho/12.jpg" class="rain " style="animation-delay:7s;animation-duration:2s;-webkit-animation-delay:7s;-webkit-animation-duration: 2s">
+
+                    <img src="images/pho/10.jpg" class="rain " style="animation-delay:6s;animation-duration:1s;-webkit-animation-delay:6s;-webkit-animation-duration: 1s">
+                    <img src="images/pho/11.jpg" class=" rain" style="animation-delay:6s;animation-duration:2s;-webkit-animation-delay:6s;-webkit-animation-duration: 2s">
+                    <img src="images/pho/12.jpg" class="rain " style="animation-delay:7s;animation-duration:2s;-webkit-animation-delay:7s;-webkit-animation-duration: 2s">
+
+                    <img src="images/pho/10.jpg" class="rain " style="animation-delay:6s;animation-duration:1s;-webkit-animation-delay:6s;-webkit-animation-duration: 1s">
+                    <img src="images/pho/11.jpg" class="rain " style="animation-delay:6s;animation-duration:2s;-webkit-animation-delay:6s;-webkit-animation-duration: 2s">
+                    <img src="images/pho/12.jpg" class="rain " style="animation-delay:7s;animation-duration:2s;-webkit-animation-delay:7s;-webkit-animation-duration: 2s">
+
+                </div>
+                <div class="mark bounceIn" style="animation-delay:9s;animation-duration:1s;animation-timing-function:ease;-webkit-animation-delay:9s;-webkit-animation-duration: 1s;-webkit-animation-timing-function: ease">
+                   <div class="page4Move demo-data-step">
+                       <h4> 已被<b>靓</b>瞎 </h4>
+                       <h4>太<b>美</b>了是不是</h4>
+                       <h4><b>是</b></h4>
+
+                   </div>
+
+                </div>
+			</div>
+		</div>
+
+		<div class="page page5">
+			<div class="contain">
+                <div class="txtBox fadeIn" style="animation-duration: 2s;animation-delay: 1s;-webkit-animation-delay:1s;-webkit-animation-duration: 2s;">
+                    <h3 class="fadeIn" style="animation-duration: 4s;animation-delay: 2s;-webkit-animation-delay:2s;-webkit-animation-duration: 4s;margin-top: 2em"><b>生日快乐</b><br><br>亲爱的老婆</h3>
+                </div>
+                <h4 class="fadeIn" style="animation-duration:2s;animation-delay: 5s;-webkit-animation-delay:5s;-webkit-animation-duration: 2s;">爱你的，江州</h4>
+			</div>
+		</div>
+
+    </div>
+	<ul id="navBar" style="display: none">
+		<li>0</li>
+		<li>1</li>
+		<li>2</li>
+ 		<li>3</li>
+		<li>4</li>
+	</ul>
+
+<!--<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>-->
+<script type="text/javascript" src="js/fullPage.min.js"></script>
+<script type="text/javascript">
+	
+var runPage;
+runPage = new FullPage({
+	id : 'pageContain',                            // id of contain
+	slideTime : 800,                               // time of slide
+	continuous : true,                            // create an infinite feel with no endpoints
+	effect : {                                     // slide effect
+        	transform : {
+        		translate : 'Y',				   // 'X'|'Y'|'XY'|'none'
+        		scale : [.1, 1],				   // [scalefrom, scaleto]
+        		rotate : [0, 0]				       // [rotatefrom, rotateto]
+        	},
+        	opacity : [0, 1]                       // [opacityfrom, opacityto]
+    	},                           
+	mode : 'wheel,touch,nav:navBar',               // mode of fullpage
+	easing : 'ease'                                // easing('ease','ease-in','ease-in-out' or use cubic-bezier like [.33, 1.81, 1, 1];
+    //  ,onSwipeStart : function(index, thisPage) {   // callback before pageChange
+    //    return 'stop';
+    //  }
+    //  ,beforeChange : function(index, thisPage) {   // callback before pageChange
+    //    return 'stop';
+    //  }
+    //  ,callback : function(index, thisPage) {       // callback when pageChange
+    //    alert(index);
+    //  };
+});
+</script>
+
+<script>
+    var music_btn=document.getElementById('music_btn');
+    var music = document.getElementById('music');
+    var beginClick=document.getElementById('beginClick');
+    var start=document.getElementById('start');
+    var stopFir=document.getElementById('stopFir');
+    var smallID=document.getElementById('smallID');
+    var spanID=document.getElementById('spanID');
+
+    beginClick.onclick=function(e){
+        e.stopPropagation();
+        music.play();
+
+        document.body.removeChild(start);
+        stopFir.style.AnimationPlayState ='running';
+        stopFir.style.webkitAnimationPlayState ='running';
+        smallID.style.AnimationPlayState ='running';
+        smallID.style.webkitAnimationPlayState ='running';
+        spanID.style.AnimationPlayState ='running';
+        spanID.style.webkitAnimationPlayState ='running';
+    };
+    function playPause() {
+        if (music.paused){
+            music.play();
+            music_btn.src = './images/music_star.png';
+
+            music_btn.style.AnimationPlayState ='running';
+            music_btn.style.webkitAnimationPlayState ='running';
+
+
+        }
+        else{
+            music.pause();
+            music_btn.src = './images/music_clo.png';
+//            music_btn.style.animationPlayState='paused';
+            music_btn.style.AnimationPlayState ='paused';
+            music_btn.style.webkitAnimationPlayState ='paused';
+
+        }
+    }
+
+    //自己的定义
+//    $(function(){
+//        var cH=document.body.clientHeight;
+//        var cW=document.body.clientWidth;
+//        //loading
+////        $('.start').on('touchstart',function(e){
+////            return false;
+////        });
+//        $('.page1 *').css('animation-play-state','paused');
+//        $('.loadingLine').animate({'width':'100%'},1000);
+//        $('#beginClick').click(function(){
+//            $('.start').remove();
+//            $('.page1 *').css('animation-play-state','running');
+//        });
+//    });
+
+</script>
+
+
+
+
+</body>
+</html>

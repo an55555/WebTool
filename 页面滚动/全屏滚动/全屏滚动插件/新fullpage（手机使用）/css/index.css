@@ -1,0 +1,36 @@
+/*z-index:*/
+/*loading:100*/
+
+/*小图部分*/
+.sectionNav{
+    padding: 10px;
+    position: fixed;
+    right: 0px;
+    top: 400px;
+    z-index: 10;
+    overflow: hidden;
+    border: solid 1px red;
+}
+.sectionNav li{
+    text-align: center;
+    line-height: 50px;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f0ad4e;
+}
+.sectionNav li:first-child{
+    color: #f0ad4e;
+    background-color: #FFFFFF;
+}
+
+/*Loading部分*/
+.loading{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    background-color: #ff6c16;
+}

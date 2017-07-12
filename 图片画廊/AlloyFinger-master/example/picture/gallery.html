@@ -1,0 +1,325 @@
+﻿<!--用transform代替left-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<title>画廊1</title>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<!--Swiper3.0.4-->
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.imgGallery{
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			overflow: hidden;
+		}
+		.transform-container{
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+		}
+		.transform-con {
+			color: #fff;
+			font-size: 36px;
+			text-align: center;
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		.transform-pre, .transform-nex{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			left: 0;
+		}
+		.transform-pre{
+			transform: translateX(-100%);
+		}
+		.transform-nex{
+			transform: translateX(100%);
+		}
+		.transform-timer
+		{
+			-webkit-transition: 0.5s;
+			-moz-transition: 0.5s ;
+			-ms-transition: 0.5s ;
+			-o-transition: 0.5s ;
+			transition: 0.5s ;
+		}
+		.blue-slide {
+			background: #000;
+		}
+		.red-slide {
+			background: #000;
+		}
+		.orange-slide {
+			background: #000;
+		}
+
+
+		.display-box{
+			display:-moz-box;
+			display:-webkit-box;
+			display:box;
+			-moz-box-orient:vertical;
+			-webkit-box-orient:vertical;
+			box-orient:vertical;
+			box-pack: center;
+			box-align: center;
+			-webkit-box-pack: center;
+			-webkit-box-align: center;
+			-moz-box-pack: center;
+			-moz-box-align: center;
+			-moz-box-pack: center;
+			-webkit-box-pack: center;
+			-webkit-box-align: center;
+		}
+		.display-box img{
+			display: block;
+			max-height: 100%;
+			width: auto;
+			max-width: 100%;
+			height: auto;
+		}
+		#btn1{
+			position: fixed;
+			width: 100%;
+			background: rgba(0,0,0,0.6);
+			color: #fff;
+			text-align: center;
+			padding: 20px 0;
+			bottom: 0px;
+			z-index: 10;
+		}
+		#btn2{
+			position: fixed;
+			width: 100%;
+			background: rgba(0,0,0,0.6);
+			color: #fff;
+			text-align: center;
+			padding: 20px 0;
+			top: 0px;
+			z-index: 10;
+		}
+	</style>
+</head>
+<body>
+<div id="btn1"></div>
+<div class="imgGallery">
+	<div class="transform-container" id="transform-container">
+		<div class="transform-pre red-slide display-box"><img src="1224.jpg"  alt=""/></div>
+		<div class="transform-con blue-slide display-box">    <img src="../../asset/cover.jpg" id="mainImg" alt="" /></div>
+		<div class="transform-nex orange-slide display-box">    <img src="./1324.jpg" alt="" /></div>
+	</div>
+</div>
+<script src="transform.js"></script>
+<script src="alloy_finger.js"></script>
+<script src="image_loaded.js"></script>
+<script src="to.js"></script>
+<script>
+	;(function(){
+		var imgGallery=function(option){
+			this.drawTranslateX=0;
+			this.drawTranslateY=0;
+			this.drawScaleX=1;
+			this.drawRotate=0;
+			//this.getImg=option.images;
+			this.mainCon=$('.transform-con');  //画廊盒子
+			this.mainImg=$('#mainImg')[0];  //主图
+			this.mainBox=document.getElementById('transform-container');
+			this.cImg=new Image;
+			this.cImg.src=this.mainImg.src;
+			this.cImg.onload=function(){
+				$('#mainImg').attr('getW',$('#mainImg').outerWidth())
+				$('#mainImg').attr('getH',$('#mainImg').outerHeight())
+				this.init()
+			}.bind(this)
+		}
+		imgGallery.prototype = {
+			init:function(){
+				var self = this;
+				var el= this.mainImg;
+				var box=this.mainBox
+				Transform(el);
+				Transform(box);
+				function ease(x) {
+					return Math.sqrt(1 - Math.pow(x - 1, 2));
+				}
+				new AlloyFinger(el, {
+					multipointStart: function () {
+						To.stopAll();
+						initScale = el.scaleX;
+					},
+					rotate: function (evt) {
+						el.rotateZ += evt.angle;
+					},
+					pinch: function (evt) {
+						el.scaleX = el.scaleY = initScale * evt.scale;;
+					},
+					multipointEnd: function (evt) {
+						var translateCritical=self._critical(el,el.scaleX);
+						var drawTranslateX=el.translateX;
+						var drawTranslateY=el.translateY;
+						var drawScaleX=el.scaleX;
+						self.drawRotate=el.rotateZ;
+						if ((Math.abs((self.drawRotate/90))%2==0&&el.scaleX<=1)||(Math.abs((self.drawRotate/90))%2!=0&&el.scaleX<=self.adaptImg(self.drawRotate))) {
+							new To(el, "translateX",0, 500, ease);
+							new To(el, "translateY",0, 500, ease);
+						}else{
+							if(el.translateX>translateCritical[0]){
+								new To(el, "translateX",translateCritical[0], 500, ease);
+							}
+							if(el.translateX<translateCritical[1]){
+								new To(el, "translateX",translateCritical[1], 500, ease);
+							}
+							if(el.translateY>translateCritical[2]){
+								new To(el, "translateY",translateCritical[2], 500, ease);
+							}
+							if(el.translateY<translateCritical[3]){
+								new To(el, "translateY",translateCritical[3], 500, ease);
+							}
+						}
+
+						var rotation = el.rotateZ % 360;
+						if (rotation < 0)rotation = 360 + rotation;
+						el.rotateZ=rotation;
+						if (rotation > 0 && rotation < 45) {
+							new To(el, "rotateZ", 0, 500, ease);
+							self.drawRotate=0;
+						} else if (rotation >= 315) {
+							new To(el, "rotateZ", 360, 500, ease);
+							self.drawRotate=360;
+						} else if (rotation >= 45 && rotation < 135) {
+							new To(el, "rotateZ", 90, 500, ease);
+							self.drawRotate=90;
+						} else if (rotation >= 135 && rotation < 225) {
+							new To(el, "rotateZ", 180, 500, ease);
+							self.drawRotate=180;
+						} else if (rotation >= 225 && rotation < 315) {
+							new To(el, "rotateZ", 270, 500, ease);
+							self.drawRotate=270;
+						}
+						if (el.scaleX < 1) {
+							new To(el, "scaleX", 1*self.adaptImg(self.drawRotate), 500, ease);
+							new To(el, "scaleY", 1*self.adaptImg(self.drawRotate), 500, ease);
+						}
+						if (el.scaleX > 2) {
+							new To(el, "scaleX", 2*self.adaptImg(self.drawRotate), 500, ease);
+							new To(el, "scaleY", 2*self.adaptImg(self.drawRotate), 500, ease);
+						}
+
+						//处理外框
+						if(Math.abs(box.translateX)<self.mainCon.outerWidth()/2){
+							new To(box, "translateX",0, 500, ease);
+						}else{
+							var dir=box.translateX/Math.abs(box.translateX);
+							new To(box, "translateX",dir*self.mainCon.outerWidth(), 500, ease,
+									function(){
+										new To(box, "translateX",0, 0, ease);
+										new To(box, "translateX",0, 0, ease);
+										new To(el, "translateX",0, 0, ease);
+										new To(el, "translateY",0, 0, ease);
+										new To(el, "rotateZ",0, 0, ease);
+										new To(el, "scaleX",1, 0, ease);
+										new To(el, "scaleY",1, 0, ease);
+										self.changeImg(dir)
+									});
+						}
+					},
+					pressMove: function (evt) {
+						var moveCritical=self._critical(el,el.scaleX);
+						if(el.translateX>moveCritical[0]||el.translateX<moveCritical[1]){
+							box.translateX += evt.deltaX
+						}else{
+							el.translateX += evt.deltaX;
+						}
+						el.translateY += evt.deltaY;
+						evt.preventDefault();
+					},
+					tap: function (evt) {
+//						new To(el, "rotateZ", 90, 500, ease,function(){
+//							new To(el, "scaleX", 1*self.adaptImg(90), 500, ease);
+//							new To(el, "scaleY", 1*self.adaptImg(90), 500, ease);
+//						});
+						//console.log(el.scaleX + "_" + el.scaleY + "_" + el.rotateZ + "_" + el.translateX + "_" + el.translateY);
+						//console.log("tap");
+					},
+					doubleTap: function (evt) {
+						To.stopAll();
+						if (el.scaleX > 1.5) {
+							new To(el, "scaleX", self.adaptImg(self.drawRotate), 500, ease);
+							new To(el, "scaleY", self.adaptImg(self.drawRotate), 500, ease);
+							new To(el, "translateX", 0, 500, ease);
+							new To(el, "translateY", 0, 500, ease);
+						} else {
+							new To(el, "scaleX", 2, 500, ease);
+							new To(el, "scaleY", 2, 500, ease);
+						}
+					},
+					longTap: function (evt) {
+						//console.log("longTap");
+					},
+					singleTap:function(evt){
+						// new To(el, "rotateZ", 90, 500, ease);
+					},
+					swipe: function (evt) {
+//		                	判断临界值 ，显示完整图片
+					}
+				});
+			},
+			_critical:function(el,scale){
+				console.log(this.adaptImg(this.drawRotate))
+				console.log(scale)
+				console.log($('#mainImg').outerWidth())
+				var left= Math.abs((this.mainCon.width()-$('#mainImg').outerWidth())/2);
+				var top= Math.abs((this.mainCon.height()-$('#mainImg').outerHeight())/2);
+				return [left,-left,top,-top]
+			},
+			changeImg:function(dir){
+				var preSrc=$(".transform-pre img").attr('src');
+				var nexSrc=$(".transform-nex img").attr('src');
+				var midSrc=$("#mainImg").attr('src');
+				if(dir<0){
+					$(".transform-pre img").attr('src',midSrc)
+					$(".transform-nex img").attr('src',preSrc);
+					$('#mainImg').attr('src',nexSrc)
+				}else if(dir>0){
+					$('#mainImg').attr('src',preSrc);
+					$(".transform-pre img").attr('src',nexSrc);
+					$(".transform-nex img").attr('src',midSrc);
+				}
+//				图片改变后重新保存图片显示的宽高度用于旋转后绽放调整
+				$('#mainImg').attr('getW',$('#mainImg').outerWidth())
+				$('#mainImg').attr('getH',$('#mainImg').outerHeight())
+			},
+			adaptImg:function(rote){
+				if(Math.abs((rote/90))%2==0){
+				 	 return 1
+				}else{
+					var conW=$("#transform-container").outerWidth();
+					var conH=$("#transform-container").outerHeight();
+					var iW=$('#mainImg').attr('getW')
+					var iH=$('#mainImg').attr('getH')
+					if((conW/conH)<=(iH/iW)){
+						return conW/iH
+					}else{
+						return conH/iW
+					}
+				}
+			}
+		}
+		var imG=new imgGallery();
+	})();
+</script>
+</body>
+</html>

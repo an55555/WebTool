@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+<meta charset="utf-8">
+<title>全屏滚动插件pagePiling.js演示-默认_dowebok</title>
+<link rel="stylesheet" href="css/jquery.pagepiling.css">
+	<link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/xiu.css">
+<style>
+    .section { text-align: center; color: #fff;}
+    p{
+        /*display: none;*/
+    }
+    #pp-nav{
+        display: none;
+    }
+
+
+</style>
+</head>
+
+<body>
+<div class="start" style="z-index: 100">
+    <div class="loadingMark"><div class="loading2"></div>加载中。。。 </div>
+    <img src="images/begin.jpg">
+    <div id="onePageBox" class="fadeIn" style="animation-delay:2s;animation-duration:3s;width: 100%;height: 100%">
+        <div class="timing  fadeOut" style="animation-delay:5s;animation-duration:1s;z-index: 9">3</div>
+        <div class="timing  fadeOut" style="animation-delay:8s;animation-duration:1s;z-index: 8">2</div>
+        <div class="timing  fadeOut" style="animation-delay:11s;animation-duration:1s;z-index: 7">1</div>
+        <div class="timing  fadeOut" style="animation-delay:14s;animation-duration:1s;z-index: 6">1.5</div>
+        <div class="timing  fadeOut" style="animation-delay:17s;animation-duration:1s;z-index: 5">0</div>
+        <div class="timing  fadeOut" style="animation-delay:22s;animation-duration:1s;z-index: 4">走起</div>
+        <div class="timing  fadeOut" style="animation-delay:27s;animation-duration:1s;z-index: 3">....</div>
+        <div class="timing  fadeOut" style="animation-delay:30s;animation-duration:1s;z-index: 2">走...</div>
+        <div class="timing  fadeOut" style="animation-delay:32s;animation-duration:1s;z-index: 1">走走走！</div>
+    </div>
+</div>
+
+
+<div id="dowebok" class="page">
+	<div class="section" id="onePage">
+        <img src="images/onebg1.png" width="100%" height="100%" class="Go bounceInRight" style="animation-delay:1s;animation-duration:2s;animation-timing-function:ease;position: absolute;top: 0px;left: 0px;z-index: 1">
+        <p class="Go bounceInLeft" style="animation-duration:2s;animation-delay:3s;position: relative;z-index: 2">
+           <br>啦啦啦啦<br> 琴的第22个生日<br>有丢丢大....<br><span class="Go rotateInUpLeft" style="animation-delay:4s;animation-duration:2s;position: relative;z-index: 2">但在我心里永远是个长不大的小女孩</span>
+        </p>
+    </div>
+
+	<div class="section" id="twoPage">
+        <p class="Go fadeIn" style="animation-delay:1s;animation-duration:2s">老婆在成长</p>
+        <p class="Go fadeIn" style="animation-delay:5s;animation-duration:2s">还有....</p>
+        <p class="Go fadeIn" style="animation-delay:8s;animation-duration:2s;font-weight: bold;">我们</p>
+        <div class="phoBox">
+            <img src="images/4.png" class="Go flipOutY" style="animation-duration:2.5s;z-index: 8">
+            <img src="images/8.png" class="Go flipOutY" style="animation-delay:2.5s;animation-duration:2.5s;z-index: 7">
+            <img src="images/5.png" class="Go flipOutY" style="animation-delay:5.5s;animation-duration:2.5s;z-index: 6">
+            <img src="images/7.png" class="Go flipOutY" style="animation-delay:7.5s;animation-duration:2.5s;z-index: 5">
+            <img src="images/6.png" class="Go flipOutY" style="animation-delay:10s;animation-duration:2.5s;z-index: 4">
+            <img src="images/9.png" class="Go flipOutY" style="animation-delay:12.5s;animation-duration:2.5s;z-index: 3">
+            <img src="images/3.png" class="Go flipOutY" style="animation-delay:15.5s;animation-duration:2.5s;z-index: 2">
+            <img src="images/1.png" class="Go flipIn" style="animation-delay:18s;animation-duration:2.5s;z-index: 1;">
+        </div>
+        <p class="Go fadeIn" style="animation-delay:15s;animation-duration:2s">有时候不需要奢求太多</p>
+        <p class="Go fadeIn" style="animation-delay:17s;animation-duration:2s">因为其实我们拥有很多</p>
+	</div>
+
+	<div class="section" id="threePage">
+        <div class="picBox">
+            <img src="images/spring.jpg" class="Go fadeOut" style="animation-duration:4s;z-index:5;">
+            <img src="images/spring.jpg" class="Go fadeOut" style="animation-delay:4s;animation-duration:4s;z-index:4">
+            <img src="images/autumn.jpg" class="Go fadeOut" style="animation-delay:8s;animation-duration:4s;z-index:3">
+            <img src="images/winter.jpg" class="Go fadeOut" style="animation-delay:12s;animation-duration:4s;z-index:2 ">
+            <img src="images/qin.jpg" class="Go" style="z-index: 1">
+        </div>
+
+        <div class="txtBox Go fadeIn"  id="twoPage-h4" style="animation-delay:1s;animation-duration:2s">
+            <p  class="Go fadeOut" style="animation-delay:4s;animation-duration:2s;z-index: 3">流走的是时间</p>
+            <p class="Go fadeOut" style="animation-delay:8s;animation-duration:2s;z-index: 2">不变的是心</p>
+            <p class="Go fadeOut" style="animation-delay:12s;animation-duration:2s;z-index: 1">永远爱你的心</p>
+            <p style="z-index: 0">爱你，琴</p>
+        </div>
+    </div>
+
+	<div class="section" id="fourPage">
+        <ul class="imgBox">
+            <li><img src="images/pho/1.jpg" class="Go fadeInDownBig" style="animation-duration:2s;"> </li>
+            <li><img src="images/pho/2.jpg" class="Go fadeInLeftBig" style="animation-delay:1s;animation-duration:3s;"> </li>
+            <li><img src="images/pho/3.jpg" class="Go bounceIn" style="animation-delay:3s;animation-duration:1s;"> </li>
+            <li><img src="images/pho/4.jpg" class="Go bounceInLeft" style="animation-delay:4s;animation-duration:2s;"> </li>
+            <li><img src="images/pho/5.jpg" class="Go rotateInDownRight" style="animation-delay:4s;animation-duration:3s;"> </li>
+            <li><img src="images/pho/6.jpg" class="Go rollIn" style="animation-delay:3s;animation-duration:2s;"> </li>
+            <li><img src="images/pho/7.jpg" class="Go bounceInDown" style="animation-delay:4s;animation-duration:1s;"> </li>
+            <li><img src="images/pho/8.jpg" class="Go fadeIn" style="animation-delay:6s;animation-duration:2s;"> </li>
+            <li><img src="images/pho/9.jpg" class="Go flipInX" style="animation-delay:5s;animation-duration:2s;"> </li>
+            <li><img src="images/pho/10.jpg" class="Go flipInY" style="animation-delay:6s;animation-duration:1s;"> </li>
+            <li><img src="images/pho/11.jpg" class="Go lightSpeedIn" style="animation-delay:6s;animation-duration:2s;"> </li>
+            <li><img src="images/pho/12.jpg" class="Go rotateIn" style="animation-delay:7s;animation-duration:2s;"> </li>
+            <div class="mark Go bounceIn" style="animation-delay:9s;animation-duration:1s;animation-timing-function:ease">已被<b>靓</b>瞎</div>
+        </ul>
+
+    </div>
+
+    <div class="section" id="fivePage">
+        <div class="fivePageBox">
+            <canvas id="myCanvas" width="300" height="300">
+            </canvas>
+            <div class="txtBox Go fadeIn" style="animation-duration: 2s;animation-delay: 3s">
+                <p class="Go fadeIn" style="margin-top: 30%;animation-duration: 5s;animation-delay: 4s"><b>生日快乐</b><br><br>亲爱的老婆</p>
+            </div>
+
+        </div>
+        <h4  class="Go fadeIn" style="animation-duration:2s;animation-delay: 8s">爱你的，江州</h4>
+    </div>
+</div>
+
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.pagepiling.min.js"></script>
+<script>
+$(function(){
+
+
+});
+
+
+//    布局部分
+    $(function(){
+        var t_img; // 定时器
+        var isLoad = true; // 控制变量
+// 判断图片加载状况，加载完成后回调
+        isImgLoad(function(){
+//            $('.loadingMark').css('display','none');
+            $('#onePageBox,.timing').addClass('animated');
+            setTimeout(function(){
+                $('.start').animate({'opacity':0},2000,function(){
+//                        $('.start').css('display','none');
+                    $('.start').remove();
+                    $('.page').css('opacity',1);
+                    dowebokLoad();
+                });
+            },33000);
+        });
+// 判断图片加载的函数
+        function isImgLoad(callback){
+            $("img").each(function(){
+                // 找到为0就将isLoad设为false，并退出each
+                if(this.height === 0){
+                    isLoad = false;
+                    return false;
+                }
+            });
+            // 为true，没有发现为0的。加载完毕
+            if(isLoad){
+                clearTimeout(t_img); // 清除定时器
+                // 回调函数
+                callback();
+                // 为false，因为找到了没有加载完成的图，将调用定时器递归
+            }else{
+                isLoad = true;
+                t_img = setTimeout(function(){
+                    isImgLoad(callback); // 递归扫描
+                },500); // 我这里设置的是500毫秒就扫描一次，可以自己调整
+            }
+        };
+
+        $('.start').click(function(){
+            $('.start').animate({'opacity':0},2000,function(){
+//                $('.start').css('display','none');
+                $('.start').remove();
+                $('.page').css('opacity',1);
+                dowebokLoad();
+
+            });
+        });
+
+//        第二屏
+        $('.phoBox').css('height', $('.phoBox').css('width'));
+//        第三屏
+        $('#threePage .picBox').css({'height': $('.picBox').css('width'),'left':($('body').width()-$('.picBox').width())/2});
+        $('#threePage .txtBox').css('top', $('#threePage .picBox').height()+50);
+
+//        第四屏
+        $('#fourPage .imgBox li').css('height', $('#fourPage .imgBox li').css('width'));
+//        第五屏
+        fivePageMove=function(bb){
+            var c=document.getElementById("myCanvas");
+            var cxt=c.getContext("2d");
+            cxt.clearRect(0,0,300,300);
+            cxt.strokeStyle='#FFFFFF';
+            var i=bb;
+            var srcTimer=setInterval(function(){
+                i+=0.01;
+                console.log(i);
+                if(i<3){
+                    cxt.beginPath();
+                    cxt.arc(150,150,100,Math.PI*1,Math.PI*i,false);
+                    cxt.stroke();
+                }else{
+                    clearInterval(srcTimer);
+                }
+
+            },10);
+        };
+
+        function dowebokLoad(){
+            $('#dowebok').pagepiling({
+                sectionsColor: ['#ffffff', '#ffffff', '#ffffff', '#ffffff'],
+//		滚动到底部后循环滚动
+                loopBottom:true,
+//		滚动到顶部后循环滚动
+                loopTop:true,
+                afterRender: function(){
+                    var el=$('.section').eq(0);
+                    $('.Go',el).css('display','block');
+                    $('.Go',el).addClass('animated');
+                },
+                onLeave: function(index, nextIndex, direction){
+                    if(direction == 'down') {
+                        directionTxt = '下';
+                    } else {
+                        directionTxt = '上';
+                    }
+                    var el=$('.section').eq(index-1);
+                    $('.Go',el).removeClass('animated');
+                    $('.Go',el).css('display','none');
+                    if(index==5){
+                        var c=document.getElementById("myCanvas");
+                        var cxt=c.getContext("2d");
+                        cxt.clearRect(0,0,300,300);
+                    };
+//			alert('你执行了向' + directionTxt +'滚动，即将离开第' + index + '屏去往第' + nextIndex +'屏');
+                },
+                //滚动后的回调函数
+                afterLoad: function(anchorLink, index){
+                    var el=$('.section').eq(index-1);
+                    $('.Go',el).css('display','block');
+                    $('.Go',el).addClass('animated');
+                    if(index==5){
+                        fivePageMove(1);
+                    };
+                }
+            });
+        };
+    })
+
+</script>
+
+
+</body>
+</html>

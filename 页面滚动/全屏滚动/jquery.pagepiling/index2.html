@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+<meta charset="utf-8">
+<title>全屏滚动插件pagePiling.js演示-默认_dowebok</title>
+<link rel="stylesheet" href="css/jquery.pagepiling.css">
+	<link rel="stylesheet" href="css/animate.css">
+<style>
+.section { text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
+
+</style>
+</head>
+
+<body>
+
+<div id="dowebok">
+	<div class="section"><h3 class="lightSpeedIn">第一屏</h3></div>
+	<div class="section"><h3 class="lightSpeedIn">第二屏</h3></div>
+	<div class="section"><h3 class="lightSpeedIn">第三屏</h3></div>
+	<div class="section"><h3 class="lightSpeedIn">第四屏</h3></div>
+</div>
+
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.pagepiling.min.js"></script>
+<script>
+$(function(){
+	$('#dowebok').pagepiling({
+		sectionsColor: ['#00d8cc', '#00c13f', '#ff7d23', '#ff1d77'],
+//		滚动到底部后循环滚动
+		loopBottom:true,
+//		滚动到顶部后循环滚动
+		loopTop:true,
+//		easing:'swing'
+//		动画时间
+//		scrollingSpeed：700
+//	    锚链接名称
+//		anchors:['11','2','3','4']
+//		内容是否上下居中
+//		verticalCentered:false
+		afterRender: function(){
+//			var el=$('.section').eq(0);
+//			$('h3',el).addClass('animated');
+		},
+		onLeave: function(index, nextIndex, direction){
+			if(direction == 'down') {
+				directionTxt = '下';
+			} else {
+				directionTxt = '上';
+			}
+            var el=$('.section').eq(index-1);
+            $('h3',el).addClass('aniStop');
+            $('h3',el).removeClass('animated');
+            $('h3',el).css('display','none');
+//			alert('你执行了向' + directionTxt +'滚动，即将离开第' + index + '屏去往第' + nextIndex +'屏');
+		},
+		//滚动后的回调函数
+		afterLoad: function(anchorLink, index){
+			var el=$('.section').eq(index-1);
+            $('h3',el).css('display','block');
+            $('h3',el).addClass('animated');
+		}
+
+	});
+});
+
+
+</script>
+
+
+</body>
+</html>

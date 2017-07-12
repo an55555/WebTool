@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="style-l.css" type="text/css" rel="stylesheet">
+    <link href="css/iconfont/iconfont.css" type="text/css" rel="stylesheet">
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+    <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="js/index.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="top bg-primary">
+    <div class="head">
+       一些常用封装
+    </div>
+</div>
+<!--main-->
+<div class="main">
+    <div class="nav">
+        <div class="nav-unit act-primary">图+库(36)</div>
+        <div class="nav-unit">素材库(963)</div>
+        <ul class="personal-center sliding">
+            <li><div class="sliding-menu">个人中心</div></li>
+            <li><div class="sliding-menu">个人中心2</div></li>
+            <li>
+                <div class="sliding-menu"><i class="iconfont">&#xe601;</i> 个人中心3</div>
+                <ul class="hidden">
+                    <li><div class="sliding-menu">课程辅导(36)</div></li>
+                    <li><div class="sliding-menu">宣传推广(30)</div></li>
+                    <li><div class="sliding-menu">课程辅导</div></li>
+                </ul>
+            </li>
+            <li>
+                <div class="sliding-menu"><i class="iconfont">&#xe601;</i> 个人中心3</div>
+                <ul class="hidden">
+                    <li>
+                        <div class="sliding-menu"><i class="iconfont">&#xe601;</i> 个人中心3</div>
+                        <ul class="hidden">
+                            <li><div class="sliding-menu">课程辅导(36)</div></li>
+                            <li><div class="sliding-menu">宣传推广(30)</div></li>
+                            <li><div class="sliding-menu">课程辅导</div></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="sliding-menu"><i class="iconfont">&#xe601;</i> 个人中心3</div>
+                        <ul class="hidden">
+                            <li><div class="sliding-menu">课程辅导(36)</div></li>
+                            <li><div class="sliding-menu">宣传推广(30)</div></li>
+                            <li>
+                                <div class="sliding-menu"><i class="iconfont">&#xe601;</i> 个人中心3</div>
+                                <ul class="hidden">
+                                    <li><div class="sliding-menu">课程辅导(36)</div></li>
+                                    <li><div class="sliding-menu">宣传推广(30)</div></li>
+                                    <li><div class="sliding-menu">课程辅导</div></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<script>
+    $('body').delegate('.sliding-menu','click',function(){
+        $('.sliding .sliding-menu').removeClass('actSling');
+        $(this).addClass('actSling');
+        if($(this).next('ul').length==0) return;
+        if( $(this).next('ul').hasClass('hidden')){
+            $(this).parent('li').siblings('li').find('ul').addClass('hidden');
+            $(this).parent('li').siblings('li').find('.iconfont').html('&#xe601;');
+            $(this).next('ul').removeClass('hidden');
+            $(this).find('.iconfont').html('&#xe603;');
+        } else {
+            $(this).next('ul').addClass('hidden');
+            $(this).find('.iconfont').html('&#xe601;');
+            $(this).next('ul').find('ul').addClass('hidden');
+            $(this).next('ul').find('.iconfont').html('&#xe601;');
+        }
+    });
+</script>
+</body>
+</html>

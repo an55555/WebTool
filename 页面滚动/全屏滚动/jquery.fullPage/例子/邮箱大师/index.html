@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>fullPage.js制作网易邮箱大师页面演示_dowebok</title>
+<link rel="stylesheet" href="css/jquery.fullPage.css">
+<style>
+#dowebok-Wrap { font-family: "Microsoft Yahei";}
+.logos { width: 1000px; height: 46px; margin: 0 auto; padding: 14px 0 0; list-style-type: none;}
+.logos .item-l { float: left; margin-right: 25px;}
+.logos .item-l a { display: block; height: 33px; background-image: url(images/sprite.png);}
+.logo-mail163 { width: 85px; background-position: 0 -300px;}
+.logo-mail126 { width: 87px; background-position: -103px -300px;}
+.logo-mailyeah { width: 90px; background-position: -205px -300px;}
+.logos .item-r { float: right;}
+.logos .item-r a { display: block; width: 97px; height: 32px; background: url(images/mailapp-logo.png) 0 0 no-repeat;}
+
+.section6 { visibility: hidden; position: relative; background: url(images/bd-bg.jpg) 0 0 repeat;}
+.m-dz { width: 450px; margin: 0 auto; padding-top: 10%; text-align: center;}
+.m-dz .icon { display: inline-block; width: 39px; height: 32px; vertical-align: top; background: url(images/icon-sprite.png) -41px 0 no-repeat;}
+.m-dz .tip .txt { font-size: 24px; line-height: 32px; vertical-align: top;}
+.m-dz .prize { width: 243px; height: 204px; margin: 50px auto 55px; background: url(images/lxx.png) 0 0 no-repeat;}
+.m-dz .act a { display: block; width: 254px; height: 47px; margin: 0 auto; color: #fff; text-decoration: none; background: url(images/icon-sprite.png) 0 -32px no-repeat;}
+.m-dz .act .txt { font-size: 18px; line-height: 47px;}
+
+.m-ft { position: absolute; left: 0; bottom: 0; width: 100%; background-color: #fff;}
+.m-ft .cp { height: 80px; line-height: 80px; font-size: 22px; color: #fff; text-align: center; background-color: #414141;}
+.m-ft .footer { height: 80px; line-height: 80px; font-size: 0; color: #999; text-align: center;}
+.m-ft .footer a, .m-ft .footer span { font-size: 14px;}
+.m-ft .footer a { margin: 0 8px; color: #999;}
+.m-ft .line { margin: 0 20px 0 12px;}
+
+#fp-nav { _position: absolute !important; _z-index: 100; _top: 50%; _margin-top: -70px;}
+#fp-nav li { width: 15px; height: 15px;}
+#fp-nav a { width: 15px; height: 15px; background: url(images/nav.png) -15px 0 no-repeat;}
+#fp-nav span { border: 0 none;}
+#fp-nav .active { background-position: 0 0;}
+#fp-nav li .active span { background-color: transparent;}
+</style>
+</head>
+
+<body>
+<div id="dowebok-Wrap">
+	<div class="section">
+		<ul class="logos">
+			<li class="item-l"><a href="http://www.dowebok.com/" hidefocus="true" class="logo logo-mail163" target="_blank"></a></li>
+			<li class="item-l"><a href="javascript:;" hidefocus="true" class="logo logo-mail126"></a></li>
+			<li class="item-l"><a href="javascript:;" hidefocus="true" class="logo logo-mailyeah"></a></li>
+			<li class="item-r"><a href="javascript:;" hidefocus="true" class="logo logo-mailapp"></a></li>
+		</ul>
+		<div id="cnt1"></div>
+	</div>
+	<div class="section">
+		<div id="cnt2"></div>
+	</div>
+	<div class="section">
+		<div id="cnt3"></div>
+	</div>
+	<div class="section">
+		<div id="cnt4"></div>
+	</div>
+	<div class="section">
+		<div id="cnt5"></div>
+	</div>
+	<div class="section section6">
+		<div class="m-dz">
+			<div class="tip"> <span class="icon"></span> <span class="txt">喜欢它，请毫不吝啬【为它点赞】</span> </div>
+			<div class="prize"></div>
+			<div class="act"> <a href="javascript:;"  class="link js-rule"><span class="txt">点此刷好评 免费送旅行箱</span></a> </div>
+		</div>
+		<div class="m-ft">
+			<div class="cp">网易邮箱出品</div>
+			<div class="footer"><a href="http://www.dowebok.com/" target="_blank">关于我们</a><a href="javascript:;">关于网易免费邮</a><a href="javascript:;">邮箱官方博客</a><a href="javascript:;">客户服务</a><a href="javascript:;">隐私政策</a><span class="copyright"><span class="line">|</span>网易公司版权所有</span> </div>
+		</div>
+	</div>
+</div>
+<script>
+var isIE6 = false;
+</script> 
+<!--[if IE 6]>
+<script src="js/DD_belatedPNG.min.js"></script>
+<script>
+    DD_belatedPNG.fix('#fp-nav li a');
+    DD_belatedPNG.fix('.logos a');
+    isIE6 = true;
+</script>
+<![endif]--> 
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/swfobject.min.js"></script>
+<script src="js/jquery.easing.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+<script>
+$(function(){
+	$("#dowebok-Wrap").fullpage({
+		verticalCentered: false,
+		navigation: true,
+		navigationTooltips: ["1", "2", "3", "4", "5", "6"],
+		afterLoad: function(anchorLink, index){
+			if(index != 6){
+				swfobject.getObjectById("cnt" + index).ntfocus();
+			}
+			if (isIE6){
+				$("#fp-nav a").css("background-position", "-15px 0");
+				$("#fp-nav .active").css("background-position", "0 0");
+				DD_belatedPNG.fix("#fp-nav a");
+			}
+		},
+		onLeave: function(index, nextIndex, direction){
+			if(nextIndex == 6){
+				return false;
+			}
+			swfobject.getObjectById("cnt" + nextIndex).ntunfocus();
+		}
+	});
+
+	//载入 flash
+	var l = "swf/1.swf?t=" + new Date().getTime(),
+		j = "swf/2.swf?t=" + new Date().getTime(),
+		h = "swf/3.swf?t=" + new Date().getTime(),
+		g = "swf/4.swf?t=" + new Date().getTime(),
+		d = "swf/5.swf?t=" + new Date().getTime();
+	var e = 1;
+	var f = {};
+	var i = {
+		wmode: "opaque"
+	};
+	var b = "100%",
+		q = "100%",
+		n = "9.0.0",
+		p = "swf/expressInstall.swf";
+	var k = {};
+	swfobject.embedSWF(l, "cnt1", b, q, n, p, f, i, k, function(a) {});
+	swfobject.embedSWF(j, "cnt2", b, q, n, p, f, i, k, function() {});
+	swfobject.embedSWF(h, "cnt3", b, q, n, p, f, i, k, function() {});
+	swfobject.embedSWF(g, "cnt4", b, q, n, p, f, i, k, function() {});
+	swfobject.embedSWF(d, "cnt5", b, q, n, p, f, i, k, function() {});
+	
+	setTimeout(function(){
+		$('.section6').css('visibility', 'visible');
+	}, 2000);
+});
+</script>
+
+</body>
+</html>

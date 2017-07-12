@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../jquery-1.11.3.min.js"></script>
+    <script src="../jquery.binding.js"></script>
+    <style>
+        h3{margin: 0}
+        .list-group-item{padding: 5px 8px;border: solid 1px #eee;margin: 20px}
+        .list-group{margin-bottom: 30px}
+        .ghost {
+            opacity: .5;
+            background: #C8EBFB;
+        }
+        .ghost2 {
+            opacity: .5;
+            background: red;
+        }
+        .grid .item {
+            padding: 10px;
+            float: left;
+        }
+        .sortable-fallback img{
+            border-radius: 50%;
+        }
+        .grid .item img {
+            cursor: move;
+            cursor: -webkit-grabbing;
+        }
+    </style>
+</head>
+<body>
+<!-- sort: true -->
+<div id="simpleList" class="list-group"></div>
+
+
+</body>
+<script src="../Sortable.js"></script>
+<script>
+    $("#simpleList").sortable({ /* options */ });
+
+    simpleList.innerHTML = Array.apply(null,  new Array(100)).map(function (v, i) {
+        return '<div class="list-group-item">item ' +
+                (i + 1) +
+                '</div>';
+    }).join('');
+
+</script>
+</html>

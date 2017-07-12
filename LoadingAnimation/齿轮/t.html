@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Title</title>
+    <link href="iconfont.css" type="text/css" rel="stylesheet">
+    <style>
+        .wheelAll{
+            font-size: 35px;
+        }
+        .wheel{
+            animation: wheel1Rote  5s infinite linear;
+            position: relative;
+            display: inline-block;
+
+        }
+        @keyframes wheel1Rote {
+            from{
+                transform: rotate(0deg) scale(10);
+                -webkit-transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        .wheel2{
+            animation: wheel2Rote  5s infinite linear;
+            position: relative;
+            display: inline-block;
+            left: -13px;
+            top: -5px;
+
+        }
+        @keyframes wheel2Rote {
+            from{
+                transform: rotate(0deg) scale(.7);
+                -webkit-transform: rotate(0deg) scale(.7);
+            }
+            to{
+                transform: rotate(-360deg) scale(.7);
+                -webkit-transform: rotate(-360deg) scale(.7);
+            }
+        }
+        .wheel3{
+            animation: wheel3Rote 5s infinite linear;
+            position: relative;
+            display: inline-block;
+            left: -64px;
+            top: 21px;
+        }
+        @keyframes wheel3Rote {
+            from{
+                transform: rotate(0deg) scale(.6);
+                -webkit-transform: rotate(0deg) scale(.6);
+            }
+            to{
+                transform: rotate(-360deg) scale(.6);
+                -webkit-transform: rotate(-360deg) scale(.6);
+            }
+        }
+
+
+        .wheelAll2{
+            font-size: 40px;
+        }
+        .wheel4{
+            animation: wheel4Rote  5s infinite linear;
+            -ms-animation: wheel4Rote  5s infinite linear;
+            position: relative;
+            display: inline-block;
+
+        }
+        @keyframes wheel4Rote {
+            from{
+                transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+
+            }
+        }
+
+        @-ms-keyframes wheel4Rote {
+            from{
+                transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+
+            }
+        }
+
+        .wheel5{
+            animation: wheel5Rote  5s infinite linear;
+            position: relative;
+            display: inline-block;
+            left: -14px;
+            top: -6px;
+
+        }
+        @keyframes wheel5Rote {
+            from{
+                transform: rotate(0deg) scale(.8);
+                -webkit-transform: rotate(0deg) scale(.8);
+                -ms-transform: rotate(0deg) scale(.8);
+
+            }
+            to{
+                transform: rotate(-360deg) scale(.8);
+                -webkit-transform: rotate(-360deg) scale(.8);
+                -ms-transform: rotate(-360deg) scale(.8);
+            }
+        }
+        .wheel6{
+            animation: wheel6Rote 5s infinite linear;
+            position: relative;
+            display: inline-block;
+            left: -53px;
+            top: 18px;
+        }
+        @keyframes wheel6Rote {
+            from{
+                transform: rotate(0deg) scale(.6);
+                -webkit-transform: rotate(0deg) scale(.6);
+            }
+            to{
+                transform: rotate(360deg) scale(.6);
+                -webkit-transform: rotate(360deg) scale(.6);
+            }
+        }
+    </style>
+</head>
+<body>
+<div>
+    <i class="iconfont wheelAll wheel" >&#xe611;</i>
+    <i class="iconfont wheelAll wheel2" >&#xe611;</i>
+    <i class="iconfont wheelAll wheel3" >&#xe611;</i>
+</div>
+<div style="margin-top: 20px">
+    <i class="iconfont wheelAll2 wheel4" >&#xe65b;</i>
+    <i class="iconfont wheelAll2 wheel5" >&#xe65b;</i>
+    <i class="iconfont wheelAll2 wheel6" >&#xe65b;</i>
+</div>
+
+
+
+</body>
+</html>

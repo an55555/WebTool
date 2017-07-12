@@ -1,0 +1,426 @@
+﻿<!--用transform代替left-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<title>Swiper中文网基础演示(www.swiper.com.cn)</title>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<!--Swiper3.0.4-->
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.transform-container{
+			/*overflow: inherit;*/
+			/*overflow: hidden;*/
+			/*margin: 0 auto;*/
+			/*position: relative;*/
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			/*width: 100px;*/
+			/*height: 100px;*/
+			/*margin: 50px auto;*/
+
+		}
+		.transform-con {
+			color: #fff;
+			font-size: 36px;
+			text-align: center;
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		.transform-pre, .transform-nex{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			left: 0;
+		}
+		.transform-pre{
+			transform: translateX(-100%);
+		}
+		.transform-nex{
+			transform: translateX(100%);
+		}
+		.transform-timer
+		{
+			-webkit-transition: 0.5s;
+			-moz-transition: 0.5s ;
+			-ms-transition: 0.5s ;
+			-o-transition: 0.5s ;
+			transition: 0.5s ;
+		}
+		.blue-slide {
+			background: #4390EE;
+		}
+		.red-slide {
+			background: #CA4040;
+		}
+		.orange-slide {
+			background: #FF8604;
+		}
+
+
+		.display-box{
+			display:-moz-box;
+			display:-webkit-box;
+			display:box;
+			-moz-box-orient:vertical;
+			-webkit-box-orient:vertical;
+			box-orient:vertical;
+			box-pack: center;
+			box-align: center;
+			-webkit-box-pack: center;
+			-webkit-box-align: center;
+			-moz-box-pack: center;
+			-moz-box-align: center;
+			-moz-box-pack: center;
+			-webkit-box-pack: center;
+			-webkit-box-align: center;
+		}
+		.display-box img{
+			display: block;
+			max-height: 100%;
+			width: auto;
+			max-width: 100%;
+			height: auto;
+			/*width: 100%;*/
+		}
+		#btn1{
+			position: fixed;
+			width: 100%;
+			background: #000000;
+			color: #fff;
+			text-align: center;
+			padding: 20px 0;
+			bottom: 0px;
+			z-index: 10;
+		}
+		#btn2{
+			position: fixed;
+			width: 100%;
+			background: #000000;
+			color: #fff;
+			text-align: center;
+			padding: 20px 0;
+			top: 0px;
+			z-index: 10;
+		}
+	</style>
+</head>
+<body>
+<div class="transform-container">
+	<div class="transform-pre red-slide display-box"><img src="http://image.tianjimedia.com/uploadImages/2013/141/44212E1S5015.jpg"  alt="" style="width: 100%;" /></div>
+	<div class="transform-con blue-slide display-box">    <img src="../../asset/cover.jpg" id="testImg" alt="" style="width: 100%;" /></div>
+	<div class="transform-nex orange-slide display-box">    <img src="http://static.yingyonghui.com/screenshots/615/615212_1.jpg" alt="" style="width: 100%;" /></div>
+</div>
+<div id="btn1">
+134314
+</div>
+<div id="btn2">
+	134314
+</div>
+<script src="transform.js"></script>
+<script src="alloy_finger.js"></script>
+<script src="image_loaded.js"></script>
+<script src="to.js"></script>
+
+<!--<script src="js/swiper.min.js"></script>-->
+<script type="text/javascript">
+	function whichTransitionEvent(){
+		var t;
+		var el = document.createElement('fakeelement');
+		var transitions = {
+			'transition':'transitionend',
+			'OTransition':'oTransitionEnd',
+			'MozTransition':'transitionend',
+			'WebkitTransition':'webkitTransitionEnd',
+			'MsTransition':'msTransitionEnd'
+		}
+		for(t in transitions){
+			if( el.style[t] !== undefined ){
+				return transitions[t];
+			}
+		}
+	}
+	var transEndEventName = whichTransitionEvent();
+	$('.transform-container').bind(transEndEventName, function(){
+		$('.transform-container').removeClass('transform-timer');
+
+		preSrc=$(".transform-pre img").attr('src');
+		nexSrc=$(".transform-nex img").attr('src');
+		midSrc=$("#testImg").attr('src');
+		if(dir!=0){
+			var value = [
+				'translate3d(' + 0 + 'px, ' + transform.translate.y + 'px, 0)'
+			];
+			$('.transform-container').css('transform',value);
+			if(dir>0){
+				$('#testImg').attr('src',nexSrc)
+				$(".transform-pre img").attr('src',midSrc)
+				$(".transform-nex img").attr('src',preSrc);
+//			$('#testImg').css('transform','perspective(500px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)');
+//			$('#testImg').css('WebkitTransform','perspective(500px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)');
+				new To(el, "translateX", 0, 0, ease);
+				new To(el, "translateY", 0, 0, ease);
+				new To(el, "scaleX", 1, 0, ease,adapt);
+				new To(el, "scaleY", 1, 0, ease);
+				new To(el, "rotateZ", 0, 0, ease);
+			}else if(dir<0){
+				$('#testImg').attr('src',preSrc)
+				$(".transform-pre img").attr('src',nexSrc)
+				$(".transform-nex img").attr('src',midSrc);
+//			$('#testImg').css('transform','perspective(500px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)');
+//			$('#testImg').css('WebkitTransform','perspective(500px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)');
+				new To(el, "translateX", 0, 0, ease);
+				new To(el, "translateY", 0, 0, ease);
+				new To(el, "scaleX", 1, 0, ease,adapt);
+				new To(el, "scaleY", 1, 0, ease);
+				new To(el, "rotateZ", 0, 0, ease);
+			}
+			START_X=0;
+			iniX=0;
+		}else{
+			START_X=iniX;
+			iniX=0
+		}
+	});
+	var preSrc=$(".transform-pre img").attr('src');
+	var nexSrc=$(".transform-nex img").attr('src');
+	var midSrc=$("#testImg").attr('src');
+	var transform;
+	var START_X=0;
+	var iniX=0;
+	var START_Y=0;
+	var START_Z=0;
+	var nowIndex=0;
+	var dir=1;
+	var moveWid=$('.transform-container').width()
+	transform = {
+		translate: { x: START_X, y: START_Y,z:START_Z},
+	};
+
+</script>
+<script>
+	var a=1;
+	var topPx;
+	imageLoaded("#testImg",function(w,h){
+//            document.querySelector("#imgBox").style.display="block";
+		topPx=window.innerHeight/2-(h*window.innerWidth/w)/2;
+//            this.style.top=topPx+"px";
+	});
+	function ease(x) {
+		return Math.sqrt(1 - Math.pow(x - 1, 2));
+	}
+	function adapt(scale){
+
+//		if($('#testImg').width()<$('.transform-container').width()){
+//			var nowW=$('.transform-container').width()
+//		}else{
+//			var nowW=(($('#testImg').width()-$('.transform-container').width())/2+$('.transform-container').width())
+//		}
+		var nowW=(($('.transform-container').width()*scale-$('.transform-container').width())/2+$('.transform-container').width())
+		$('.transform-pre').css('transform',"translateX(-"+nowW+"px)")
+		$('.transform-nex').css('transform',"translateX("+nowW+"px)");
+//		如果在放大的情况并且在临界位置缩放
+		if(scale>1&&START_X>0){
+			if(START_X<=nowW){
+//				START_X
+//				$('#btn2').text('START_X'+START_X);
+				START_X=(nowW-$('.transform-container').width());
+				transformm = {
+					translate: {x: START_X, y: START_Y, z: START_Z},
+				}
+				var value = [
+					'translate3d(' + transformm.translate.x + 'px, ' + transformm.translate.y + 'px, 0)'
+				];
+				$('.transform-container').removeClass('transform-timer');
+				$('.transform-container').css('transform',value)
+			}
+		}
+//		$('#btn2').text(($('#testImg').width()-$('.transform-container').width())/2);
+	}
+	var el=$('#testImg')[0];
+	Transform(el);
+	var initScale = 1;
+	new AlloyFinger(el, {
+		multipointStart: function () {
+
+			To.stopAll();
+			initScale = el.scaleX;
+		},
+		rotate: function (evt) {
+//			if(START_X>0){
+//				if($('.transform-container').offset().left>0){
+//					return false
+//				}
+//			}else{
+//				if($('.transform-container').offset().left<-($('#testImg').width()-$('.transform-container').width())){
+//					return false
+//				}
+//			}
+			el.rotateZ += evt.angle;
+		},
+		pinch: function (evt) {
+//
+//			if(START_X>0){
+//				if(START_X>($('#testImg').width()-$('.transform-container').width())/2){
+//					return false
+//				}
+//			}else{
+////				if(START_X<$-((('#testImg').width()-$('.transform-container').width())/2)+$('.transform-container').width()){
+////					return false
+////				}
+//			}
+//			缩放的时候
+//			if(el.scaleX>2){
+//				return false
+//			}
+			el.scaleX = el.scaleY = initScale * evt.scale;
+//			放大时两侧图片调整位置
+			if(el.scaleX>1){
+				adapt(el.scaleX)
+			}
+
+		},
+		multipointEnd: function (evt) {
+			$('#btn1').text('手机放开了');
+			if(el.scaleX<=2){
+				if(el.scaleX>=1){
+//			容器是否移动
+					if(iniX!=START_X&&Math.abs(iniX-START_X)>Math.abs($('#testImg').width()/2)){
+						if(START_X>0){
+							iniX=($('.transform-container').width()*el.scaleX)/2+$('.transform-container').width()/2;
+//						iniX=$('#testImg').width()/2+$('.transform-container').width()/2;
+							dir=-1
+						}else{
+							iniX=-(($('.transform-container').width()*el.scaleX)/2+$('.transform-container').width()/2);
+//						iniX=-(($('#testImg').width()*el.scaleX)/2+$('.transform-container').width()/2);
+							dir=1
+						}
+					}else{
+						if(Math.abs($('.transform-con').offset().left)<($('.transform-container').width()*el.scaleX)/2-$('.transform-container').width()/2){
+							iniX=START_X;
+							dir=0
+						}else{
+//					回到临界值
+							if($('.transform-con').offset().left>0){
+								iniX=($('.transform-container').width()*el.scaleX)/2-$('.transform-container').width()/2;
+							}else{
+								iniX=-(($('.transform-container').width()*el.scaleX)/2-$('.transform-container').width()/2);
+							}
+
+							dir=0
+						}
+					}
+					var value = [
+						'translate3d(' + iniX + 'px, ' + transform.translate.y + 'px, 0)'
+					];
+					$('.transform-container').addClass('transform-timer');
+					$('.transform-container').css('transform',value);
+				}
+			}
+
+			To.stopAll();
+			if(el.scaleX <= 1){
+				new To(el, "translateX", 0, 500, ease);
+				new To(el, "translateY", 0, 500, ease);
+			}
+			if (el.scaleX < 1) {
+				new To(el, "scaleX", 1, 500, ease,function(){
+					START_X=0;
+					transformm = {
+						translate: {x: 0, y: START_Y, z: START_Z},
+					}
+					var value = [
+						'translate3d(' + transformm.translate.x + 'px, ' + transformm.translate.y + 'px, 0)'
+					];
+					$('.transform-container').css('transform',value)
+
+				});
+				new To(el, "scaleY", 1, 500, ease);
+			}
+
+			if (el.scaleX > 2) {
+//				adapt(el.scaleX)
+				new To(el, "scaleX", 2, 0, ease,function(){
+					//	最大值不超过2倍，两侧图片调整位置
+					adapt(el.scaleX)
+				});
+				new To(el, "scaleY", 2, 0, ease);
+			}
+
+			var rotation = el.rotateZ % 360;
+
+			if (rotation < 0)rotation = 360 + rotation;
+			el.rotateZ=rotation;
+			if (rotation > 0 && rotation < 45) {
+				new To(el, "rotateZ", 0, 500, ease);
+			} else if (rotation >= 315) {
+				new To(el, "rotateZ", 360, 500, ease);
+			} else if (rotation >= 45 && rotation < 135) {
+				new To(el, "rotateZ", 90, 500, ease);
+			} else if (rotation >= 135 && rotation < 225) {
+				new To(el, "rotateZ", 180, 500, ease);
+			} else if (rotation >= 225 && rotation < 315) {
+				new To(el, "rotateZ", 270, 500, ease);
+			}
+
+		},
+		pressMove: function (evt) {
+			$('.transform-container').removeClass('transform-timer');
+			el.translateY += evt.deltaY;
+			START_X+=evt.deltaX;
+			transformm = {
+				translate: {x: START_X, y: START_Y, z: START_Z},
+			}
+			var value = [
+				'translate3d(' + transformm.translate.x + 'px, ' + transformm.translate.y + 'px, 0)'
+			];
+			$('.transform-container').css('transform',value)
+			el.translateX += 0;
+			el.translateY += 0;
+			evt.preventDefault();
+		},
+		tap: function (evt) {
+			//console.log(el.scaleX + "_" + el.scaleY + "_" + el.rotateZ + "_" + el.translateX + "_" + el.translateY);
+			//console.log("tap");
+		},
+		doubleTap: function (evt) {
+			To.stopAll();
+			if (el.scaleX > 1.5) {
+				new To(el, "scaleX", 1, 500, ease);
+				new To(el, "scaleY", 1, 500, ease);
+				new To(el, "translateX", 0, 500, ease);
+				new To(el, "translateY", 0, 500, ease);
+				adapt(1)
+			} else {
+				var box = el.getBoundingClientRect();
+				var y = box.height - (( evt.changedTouches[0].pageY - topPx) * 2) - (box.height / 2 - ( evt.changedTouches[0].pageY - topPx));
+				var x = box.width - (( evt.changedTouches[0].pageX) * 2) - (box.width / 2 - ( evt.changedTouches[0].pageX));
+				new To(el, "scaleX", 2, 500, ease);
+				new To(el, "scaleY", 2, 500, ease);
+				adapt(2)
+//				new To(el, "translateX", x, 500, ease);
+//				new To(el, "translateY", y, 500, ease);
+			}
+
+			//console.log("doubleTap");
+		},
+		longTap: function (evt) {
+			//console.log("longTap");
+		},
+		swipe: function (evt) {
+			//console.log("swipe" + evt.direction);
+		}
+
+	});
+</script>
+</body>
+</html>

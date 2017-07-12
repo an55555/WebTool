@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+    <title></title>
+<link href="css/iSlider.css" type="text/css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: "微软雅黑";
+        }
+
+        #iSlider-wrapper ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #iSlider-wrapper li {
+            width: 100%;
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            list-style: none;
+        }
+
+        #iSlider-wrapper {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .content{
+            width: 100%;
+            height: 100%;
+            color: #FFFFFF;
+            display:-moz-box;
+            display:-webkit-box;
+            display:box;
+
+            /*-moz-box-orient:horizontal;*/
+            /*-webkit-box-orient:horizontal;*/
+            /*box-orient:horizontal;*/
+
+            box-pack: center;
+            box-align: center;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+        }
+
+        .page1{
+            background: #19CAAD;
+        }
+        .page2{
+            background: #8CC7B5;
+        }
+        .page3{
+            background: #A0EEE1;
+        }
+        .page4{
+            background: #F4606C;
+        }
+        .page5{
+            background: #BEEDC7;
+        }
+        h1{
+            font-weight: normal;
+            animation:move 1s both
+        }
+        @keyframes move{
+            from{
+                transform:translateY(100px)
+            }to{
+              transform:translateY(0px)
+                         }
+        }
+        .page1 h1{
+            animation:move 1s both
+        }
+
+    </style>
+</head>
+<body>
+<div id="iSlider-wrapper">
+
+</div>
+<script type="text/javascript" src="js/iSlider.js"></script>
+<script type="text/javascript" src="js/iSlider.animate.js"></script>
+<script type="text/javascript" src="js/iSlider.plugin.button.js"></script>
+<script type="text/javascript" src="../../../../jquery-1.11.3.min.js"></script>
+<script>
+var list=[
+    {
+        'content': '<div class="content page1" id="page0"><h1>这是第一屏</h1></div>'
+    },
+    {
+        'content': '<div class="content page2" id="page1"><h1>这是第二屏</h1></div>'
+    },
+    {
+        'content': '<div class="content page3" id="page2"><h1>这是第三屏</h1></div>'
+    },
+    {
+        'content': '<div class="content page4" id="page3"><h1>这是第四屏</h1></div>'
+    },
+    {
+        'content': '<div class="content page5" id="page4"><h1>这是第五屏</h1></div>'
+    }
+];
+
+var opts = {
+    data: list,
+    dom: document.getElementById("iSlider-wrapper"),
+    animateType:'default',
+//    plugins: ['button'],
+    isLooping:'true'
+};
+
+var islider = new iSlider(opts);
+islider.on("slideChanged",function(ind){
+//    $('.content').each(function(){
+//        $(this).css('display','none');
+//    })
+//    $('.content').eq(ind).css('display','block');
+});
+//
+//for(var i=0;i<tabs.length;i++){
+//    tabs[i].id = i;
+//    tabs[i].addEventListener('click', function (e) {
+//        var idx = parseInt(e.target.id);
+//        islider.slideTo(idx);
+//        span.style.weidth=tabs[idx].clientWidth+'px';
+//        span.style.left=tabs[idx].offsetLeft+'px'
+//    }, false);
+//}
+</script>
+
+</body>
+</html>
